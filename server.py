@@ -19,6 +19,7 @@ def route_question():
 def route_new_question():
     return render_template('new_question.html')
 
+
 @app.route('/answer')
 def route_answer():
     return render_template('answer.html')
@@ -27,6 +28,6 @@ def route_answer():
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
-        port=4000,
+        port=8000,
         debug=True,
     )

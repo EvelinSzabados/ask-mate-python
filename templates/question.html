@@ -14,7 +14,7 @@
                       {% endif %}
                   {% endfor %}
               </tr>
-            {%for data in questions:%}
+            {% for data in questions: %}
                 <tr>
                     {% for key, value in data.items() %}
                         {%if key != "image" %}
