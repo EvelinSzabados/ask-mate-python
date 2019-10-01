@@ -1,0 +1,121 @@
+body{
+    font-family: Verdana, monospace;
+    background-color: #cccccc;
+    margin-top: 50px;
+    padding:0px;
+    color:#404040;
+
+}
+
+#container{
+    background-color: white;
+    padding:20px;
+    width: 70%;
+    margin: 0px auto;
+}
+
+#container h1{
+    color: cadetblue;
+    text-transform: uppercase;
+}
+
+#container table{
+    margin: 0px auto;
+    width: 99%;
+}
+#container table th{
+    padding: 15px;
+    margin:15px;
+    text-align: center;
+    text-transform: uppercase;
+    color:white;
+    background-color: cadetblue;
+}
+#container table td{
+    margin: 15px;
+    padding:15px;
+    text-align:left;
+
+}
+.error{
+    color: red;
+    text-transform: uppercase;
+}
+method{
+    padding:0px;
+}
+.update_link{
+    text-decoration: none;
+    color: cadetblue;
+    font-weight: bold;
+}
+.update_link:hover{
+    color: darkgrey;
+}
+#container .button{
+  background-color: cadetblue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#container .button:hover{
+  background-color: darkcyan;
+    transition: 0.3s;
+
+}
+#container .button_back{
+  background-color: azure;
+  border: none;
+  color: cadetblue;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#container .button_back:hover{
+  background-color: darkgrey;
+    color:white;
+    transition: 0.3s;
+}
+#container .button_update{
+    font-weight: bold;
+    background-color: transparent;
+  color: cadetblue;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+
+}
+input{
+    padding:10px;
+    width: 25%;
+
+}
+textarea{
+    padding:15px;
+}
+
+#select_box{
+    width: 27%;
+    background-color: white;
+    color: #404040;
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    font-size: 16px;
+    border:1px solid #ccc;
+    padding: 15px;
+}

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Welcome!
+{% endblock %}
+
+{% block content %}
+    <h1>Ask mate</h1>
+
+{% for dict in questions %}
+    <p>{{dict["title"]}}</p>
+
+{% endfor %}
+{% endblock %}
+
+
