@@ -9,8 +9,8 @@ def route_list():
     return render_template('list.html', questions=questions)
 
 
-@app.route('/question')
-def route_question():
+@app.route('/question/<question_id>')
+def route_question(question_id: int):
     questions = connection.get_all_questions()
     return render_template('question.html',questions=questions)
 
