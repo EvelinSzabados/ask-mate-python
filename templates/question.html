@@ -4,7 +4,29 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Question Details</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda cum dolores eum, incidunt ipsam iste maiores numquam omnis quam, quisquam unde velit vero! Eum nam perspiciatis tempore. Ipsum, quas?</p>
-     <a href="/"><input type="button" class="button" value="Post answer"></a>
+
+    <table>
+            <caption><h1>Super Sprinter 3000</h1></caption>
+              <tr>
+                  {% for key in questions[0].keys(): %}
+                      {%if key != "image" %}
+                        <th> {{ key }} </th>
+                      {% endif %}
+                  {% endfor %}
+              </tr>
+            {%for data in questions:%}
+                <tr>
+                    {% for key, value in data.items() %}
+                        {%if key != "image" %}
+                            <td> {{ value }} </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+    </table>
+
+
+
+     <a href="/answer"><input type="button" class="button" value="Post answer"></a>
 {% endblock %}
