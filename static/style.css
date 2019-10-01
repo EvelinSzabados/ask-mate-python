@@ -15,7 +15,7 @@ body{
 }
 
 #container h1{
-    color: cadetblue;
+    color: dimgray;
     text-transform: uppercase;
 }
 
@@ -98,6 +98,16 @@ method{
   width: 100%;
   cursor: pointer;
 
+}
+
+#container a{
+    text-decoration: none;
+    color: darkslategrey;
+
+}
+#container a:hover{
+    color: cadetblue;
+    transition: 0.3s;
 }
 input{
     padding:10px;

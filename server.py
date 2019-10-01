@@ -14,6 +14,11 @@ def route_question():
     return render_template('question.html')
 
 
+@app.route('/new_question')
+def route_new_question():
+    return render_template('new_question.html')
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
