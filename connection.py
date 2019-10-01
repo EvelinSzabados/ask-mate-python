@@ -14,6 +14,7 @@ def get_all_questions():
                     line[key] = dt_object
 
             questions.append(dict(line))
+            questions.sort(key=lambda x: x['submission_time'], reverse=True)
 
     return questions
 
