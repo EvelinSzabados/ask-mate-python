@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 
+
 def get_all_questions():
     with open('sample_data/question.csv') as csv_file:
         csv_reader = csv.DictReader(csv_file, delimiter=',')
