@@ -65,8 +65,6 @@ def route_answer():
     return render_template('answer.html')
 
 
-def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
-    return value.strftime(format)
 
 if __name__ == '__main__':
     app.run(
