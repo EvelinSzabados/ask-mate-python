@@ -22,6 +22,7 @@
                         {% endif %}
                     {% endfor %}
                 </tr>
+
             {% endfor %}
     </table>
     <br>
@@ -41,5 +42,5 @@
             <p><i>No answers posted yet!</i></p>
       {% endif %}
      </div>
-     <a href="/answer"><input type="button" class="button" value="Post answer"></a><a href="/"><input type="button" class="button" value="Back to home"></a>
+     <a href="{{ url_for('route_answer')}}"><input type="button" class="button" value="Post answer"></a><a href="/"><input type="button" class="button" value="Back to home"></a>
 {% endblock %}
