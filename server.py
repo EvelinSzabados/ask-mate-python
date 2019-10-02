@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import connection
+import data_manager
 app = Flask(__name__)
 
 @app.route('/')
@@ -26,9 +27,22 @@ def route_question(question_id: int):
     return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
 
 
-@app.route('/new_question')
+@app.route('/new_question', methods=['GET', 'POST'])
 def route_new_question():
-    return render_template('new_question.html')
+    if request.method == 'POST':
+        new_question = {
+            'id': data_manager.get_next_id(),
+            'submission_time': data_manager.current_submission_time(),
+            'view_number': 0,
+            'vote_number': 0,
+            'title': request.form.get('title'),
+            'message': request.form.get('message'),
+            'image': None
+        }
+
+        connection.add_new_question(new_question)
+        return redirect('/')
+
 
 
 @app.route('/answer')

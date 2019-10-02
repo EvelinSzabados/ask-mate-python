@@ -1,5 +1,8 @@
 import csv
 from datetime import datetime
+import os
+
+DATA_HEADER = ['id', 'submission_time', 'view_number', 'vote_number', 'title', 'message', 'image']
 
 
 def get_all_questions():
