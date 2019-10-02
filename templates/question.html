@@ -6,7 +6,7 @@
 {% block content %}
 
     <table>
-            <caption><h1>Ask Mate</h1></caption>
+            <caption><h2>Question Details</h2></caption>
               <tr>
                   {% for key in actual_question[0].keys(): %}
                       {%if key != "image" %}
@@ -25,20 +25,21 @@
             {% endfor %}
     </table>
     <br>
- <h5>Answers</h5>
- <div class = "answers">
-     {% for data in answers: %}
-         <p class="answer_header">
-        {% for key, value in data.items() %}
-            {% if data["question_id"] == question_id and key != "message" %}
-                {{ key+ ": " + value + ", " }}
-            {% endif %}
-        {% endfor %}
-        </p>
-        {% if data["question_id"] == question_id%}
+     <h4>Answers</h4>
+     <div class = "answers">
+        {% if actual_answers|length >0 %}
+            {% for data in actual_answers: %}
+                <p class="answer_header">
+                {% for key, value in data.items() %}
+                    {% if  key != "message" %}
+                        {{ key+ ": " + value + " " }}
+                    {% endif %}
+                {% endfor %}
             <p class="answer_content">{{ data["message"]}}</p>
-        {% endif %}
-    {% endfor %}
- </div>
+            {% endfor %}
+        {% else %}
+            <p><i>No answers posted yet!</i></p>
+      {% endif %}
+     </div>
      <a href="/answer"><input type="button" class="button" value="Post answer"></a><a href="/"><input type="button" class="button" value="Back to home"></a>
 {% endblock %}

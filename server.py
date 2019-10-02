@@ -14,12 +14,16 @@ def route_question(question_id: int):
     questions = connection.get_all_questions()
     answers = connection.get_all_answers()
     actual_question = []
+    actual_answers = []
     for line in questions:
         for key, value in line.items():
             if value == question_id:
                 actual_question.append(dict(line))
+    for answer in answers:
+        if answer["question_id"] == question_id:
+            actual_answers.append(dict(answer))
 
-    return render_template('question.html', actual_question=actual_question, answers=answers, question_id=question_id)
+    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
 
 
 @app.route('/new_question')
@@ -30,7 +34,6 @@ def route_new_question():
 @app.route('/answer')
 def route_answer():
     return render_template('answer.html')
-
 
 
 if __name__ == '__main__':
