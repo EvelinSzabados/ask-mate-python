@@ -32,7 +32,7 @@ def route_new_question():
                     id_list.append(value)
         new_id = max(id_list)
 
-        new_data["submission_time"] = "20191111"
+        new_data["submission_time"] = data_manager.current_submission_time()
         new_data["view_number"] = 0
         new_data["vote_number"] = 0
         new_data["title"] = request.form.get("title")
