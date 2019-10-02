@@ -14,8 +14,8 @@ def get_next_id():
 def current_submission_time():
 
     submission_time = int(time.time())
-    new_object = str(datetime.fromtimestamp(int(submission_time)))
-    return new_object
+
+    return submission_time
 
 
 def get_actual_question(question_id):

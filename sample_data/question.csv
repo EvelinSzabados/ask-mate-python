@@ -1,9 +1,5 @@
 id,submission_time,view_number,vote_number,title,message,image
-
 1,2017-04-24 23:08:44,15,9,Wordpress loading multiple jQuery Versions,"I developed a plugin that uses the jquery booklet plugin (http://builtbywill.com/booklet/#/) this plugin binds a function to $ so I cann call $('.myBook').booklet();
 app.js (bundled file with webpack, including jquery)",images/image1.png
 2,2017-04-24 08:30:32,1364,57,Drawing canvas with an image picked with Cordova Camera Plugin,"I'm getting an image from device and drawing a canvas with filters using Pixi JS.,
 ",
-3,20191111,0,0,Sálálááááá,Faszooom,
-4,20191111,0,0,How about no?,We are done for today.,
-5,20191111,0,0,Utolsó?,Faszom,
