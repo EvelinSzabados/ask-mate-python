@@ -8,13 +8,13 @@
     <table>
             <caption><h1>Ask Mate</h1></caption>
               <tr>
-                  {% for key in questions[0].keys(): %}
+                  {% for key in actual_question[0].keys(): %}
                       {%if key != "image" %}
                         <th> {{ key }} </th>
                       {% endif %}
                   {% endfor %}
               </tr>
-            {% for data in questions: %}
+            {% for data in actual_question: %}
                 <tr>
                     {% for key, value in data.items() %}
                         {%if key != "image" %}

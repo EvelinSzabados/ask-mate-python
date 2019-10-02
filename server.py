@@ -12,7 +12,13 @@ def route_list():
 @app.route('/question/<question_id>')
 def route_question(question_id: int):
     questions = connection.get_all_questions()
-    return render_template('question.html',questions=questions)
+    actual_question = []
+    for line in questions:
+        for key, value in line.items():
+            if value == question_id:
+                actual_question.append(dict(line))
+
+    return render_template('question.html',actual_question=actual_question)
 
 
 @app.route('/new_question')
