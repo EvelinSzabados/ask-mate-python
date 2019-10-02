@@ -25,11 +25,20 @@
             {% endfor %}
     </table>
     <br>
-<h1>Answers:</h1>
+ <h5>Answers</h5>
  <div class = "answers">
-
- No answers yet!
+     {% for data in answers: %}
+         <p class="answer_header">
+        {% for key, value in data.items() %}
+            {% if data["question_id"] == question_id and key != "message" %}
+                {{ key+ ": " + value + ", " }}
+            {% endif %}
+        {% endfor %}
+        </p>
+        {% if data["question_id"] == question_id%}
+            <p class="answer_content">{{ data["message"]}}</p>
+        {% endif %}
+    {% endfor %}
  </div>
-
      <a href="/answer"><input type="button" class="button" value="Post answer"></a><a href="/"><input type="button" class="button" value="Back to home"></a>
 {% endblock %}

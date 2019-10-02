@@ -13,17 +13,43 @@ body{
     width: 70%;
     margin: 0px auto;
 }
+
+#container .answer_header{
+    margin-top: 10px;
+    font-size: 12px;
+    text-transform: capitalize;
+    color:cadetblue;
+}
+#container .answer_content{
+    margin-left: 20px;
+    padding:10px;
+    background-color: white;
+}
 #container .answers{
-    background-color: #cccccc;
+    background-color: #eeeeee;
     padding: 30px 20px 30px 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #container h1{
     color: dimgray;
     text-transform: uppercase;
 }
-
+#container .answers_table {
+    width: auto;
+    font-size: 10px;
+    color:#404040;
+    padding: 5px;
+    margin:0px;
+  }
+#container .answers_table caption{
+    text-align: left;
+}
+#container .answers_table .details{
+    padding:0px;
+    text-align: left;
+    margin:2px;
+}
 #container table{
     margin: 0px auto;
     width: 99%;
@@ -60,19 +86,19 @@ method{
     color: darkgrey;
 }
 #container .button{
-  background-color: cadetblue;
+  background-color: #eeeeee;
   border: none;
-  color: white;
+  color: cadetblue;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 20px 5px 10px 5px;
   cursor: pointer;
 }
 #container .button:hover{
-  background-color: darkcyan;
+  background-color: #cccccc;
     transition: 0.3s;
 
 }
