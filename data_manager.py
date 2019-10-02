@@ -3,6 +3,28 @@ import csv
 import time
 from datetime import datetime
 
+
+def convert_questions():
+    converted_time = None
+    converted_questions = connection.get_all_questions()
+    for line in converted_questions:
+        for key, value in line.items():
+            if key == "submission_time":
+                converted_time = datetime.fromtimestamp(int(value))
+                line[key] = str(converted_time)
+    return converted_questions
+
+
+def convert_answers():
+    converted_time = None
+    converted_answers = connection.get_all_answers()
+    for line in converted_answers:
+        for key, value in line.items():
+            if key == "submission_time":
+                converted_time = datetime.fromtimestamp(int(value))
+                line[key] = str(converted_time)
+    return converted_answers
+
 def get_next_id():
     existing_data = connection.get_all_questions()
     if len(existing_data) == 0:
@@ -19,7 +41,7 @@ def current_submission_time():
 
 
 def get_actual_question(question_id):
-    questions = connection.get_all_questions()
+    questions = convert_questions()
     actual_question = []
     for line in questions:
         for key, value in line.items():
@@ -29,7 +51,7 @@ def get_actual_question(question_id):
 
 
 def get_actual_answer(question_id):
-    answers = connection.get_all_answers()
+    answers = convert_answers()
     actual_answers = []
     for answer in answers:
         if answer["question_id"] == question_id:
