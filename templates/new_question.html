@@ -5,8 +5,7 @@
 
 {% block content %}
     <h1>Add new question</h1>
-     <form action="{{ form_url }}"
-          method="post">
+     <form action="/new_question" method="post">
         <p>
             <label for="title">Question:</label><br>
             <input type="text" name="title" id="title" required minlength="5">
@@ -16,5 +15,5 @@
             <textarea name="message" id="message" cols="40" rows="4" required></textarea>
         </p>
     <a href="/"><input type="button" class="button" value="Back to home"></a>
-    <a href="/"><input type="button" class="button" value="Submit"></a>
+    <button type="submit" class="button" >Submit</button>
 {% endblock %}

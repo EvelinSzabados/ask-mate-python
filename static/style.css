@@ -24,6 +24,7 @@ body{
     margin-left: 20px;
     padding:10px;
     background-color: white;
+    border-left: 6px solid cadetblue;
 }
 #container .answers{
     background-color: #eeeeee;
@@ -117,9 +118,10 @@ method{
   cursor: pointer;
 }
 #container .button_back:hover{
-  background-color: darkgrey;
+    background-color: darkgrey;
     color:white;
     transition: 0.3s;
+
 }
 #container .button_update{
     font-weight: bold;
