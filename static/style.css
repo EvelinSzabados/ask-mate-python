@@ -27,7 +27,7 @@ body{
 }
 #container .answers{
     background-color: #eeeeee;
-    padding: 30px 20px 30px 20px;
+    padding: 10px 10px 10px 20px;
     margin-top: 10px;
 }
 
@@ -42,8 +42,9 @@ body{
     padding: 5px;
     margin:0px;
   }
-#container .answers_table caption{
+#container caption {
     text-align: left;
+
 }
 #container .answers_table .details{
     padding:0px;
@@ -58,8 +59,9 @@ body{
     padding: 15px;
     margin:15px;
     text-align: center;
-    text-transform: uppercase;
-    font-size: 13px;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight:normal;
     color:white;
     background-color: cadetblue;
 }
