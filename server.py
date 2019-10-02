@@ -29,9 +29,10 @@ def route_question(question_id: int):
 
 @app.route('/new_question', methods=['GET', 'POST'])
 def route_new_question():
+    new_id = data_manager.get_next_id()
     if request.method == 'POST':
         new_question = {
-            'id': data_manager.get_next_id(),
+            'id': new_id,
             'submission_time': data_manager.current_submission_time(),
             'view_number': 0,
             'vote_number': 0,
@@ -42,6 +43,8 @@ def route_new_question():
 
         connection.add_new_question(new_question)
         return redirect('/')
+
+    return render_template('question.html', question_id=new_id)
 
 
 

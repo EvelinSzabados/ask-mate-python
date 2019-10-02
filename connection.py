@@ -38,3 +38,20 @@ def get_all_answers():
 
     return answers
 
+
+def add_new_question(question, append=True):
+    existing_data = get_all_questions()
+
+    with open('question.csv', 'w', newline='', encoding='utf-8') as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=DATA_HEADER)
+        writer.writeheader()
+
+        for row in existing_data:
+            if not append:
+                if row['id'] == question['id']:
+                    row = question
+
+            writer.writerow(row)
+
+        if append:
+            writer.writerow(question)
