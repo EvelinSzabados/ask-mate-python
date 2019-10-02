@@ -5,6 +5,12 @@
 
 {% block content %}
     <h1>Post answer</h1>
+    <form action="/answer" method="post">
+        <p>
+            <label for="message">Answer:</label><br>
+            <input type="text" name="title" id="title" required minlength="5">
+        </p>
 
     <a href="/"><input type="button" class="button" value="Back to home"></a>
+        <button type="submit" class="button" >Submit</button>
 {% endblock %}
