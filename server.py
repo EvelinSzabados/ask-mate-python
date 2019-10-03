@@ -12,13 +12,6 @@ def route_list():
     return render_template('list.html', questions=questions)
 
 
-@app.route('/question/<question_id>/edit', methods=['GET', 'POST'])
-def route_edit_question(question_id):
-    if request.method == 'POST':
-        
-    return
-
-
 @app.route('/question/<question_id>')
 def route_question(question_id: int):
     actual_question = data_manager.get_actual_question(question_id)
