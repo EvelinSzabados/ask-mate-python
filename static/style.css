@@ -13,6 +13,9 @@ body{
     width: 70%;
     margin: 0px auto;
 }
+#container .table-container img{
+    padding: 10px;
+}
 
 #container .answer_header{
     margin-top: 10px;
@@ -26,10 +29,14 @@ body{
     background-color: white;
     border-left: 6px solid cadetblue;
 }
+
 #container .answers{
     background-color: #eeeeee;
     padding: 10px 10px 10px 20px;
     margin-top: 10px;
+}
+#container .answers img{
+    padding-right:20px;
 }
 
 #container h1{

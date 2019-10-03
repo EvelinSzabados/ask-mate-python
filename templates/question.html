@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block content %}
-
+    <div class="table-container">
     <table>
             <caption><h4>Question Details</h4></caption>
               <tr>
@@ -24,7 +24,10 @@
                 </tr>
 
             {% endfor %}
+
     </table>
+    <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img class="fa-thumbs-down"src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px">
+    </div>
     <br>
      <h4>Answers</h4>
      <div class = "answers">
@@ -37,12 +40,15 @@
                     {% endif %}
                 {% endfor %}
             <p class="answer_content">{{ data["message"]}}</p>
+          <a href="{{ url_for('route_delete_answer',actual_id=data["id"] )}}"><input type="button" class="button" value="Delete Answer"></a>
             {% endfor %}
         {% else %}
             <p><i>No answers posted yet!</i></p>
       {% endif %}
+         <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img class="fa-thumbs-down"src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px">
 
      </div>
+
      <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post answer"></a><a href="/"><input type="button" class="button" value="Back to home"></a>
     <a href="{{ url_for('route_delete_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Delete"></a>
 {% endblock %}

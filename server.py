@@ -20,33 +20,49 @@ def route_question(question_id: int):
     return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
 
 
+@app.route('/question/<question_id>/<question_vote>')
+def route_question_vote(question_id, question_vote):
+    questions = connection.get_all_questions()
+
+    for line in questions:
+        if line["id"] == question_id:
+            if question_vote == "up":
+                line["vote_number"] = int(line["vote_number"])+1
+
+            if question_vote == "down" and int(line["vote_number"]) > 0:
+                line["vote_number"] = int(line["vote_number"])-1
+
+    connection.add_new_question(questions)
+    return redirect(url_for('route_question', question_id=question_id))
+
+
 @app.route('/new_question', methods=['GET', 'POST'])
 def route_new_question():
-    if request.method == 'POST':
-        questions = connection.get_all_questions()
+        if request.method == 'POST':
+            questions = connection.get_all_questions()
 
-        id_list = []
-        for i in questions:
-            for key, value in i.items():
-                if key == "id":
-                    id_list.append(int(value))
-        new_id = max(id_list) + 1
+            id_list = []
+            for i in questions:
+                for key, value in i.items():
+                    if key == "id":
+                        id_list.append(int(value))
+            new_id = max(id_list) + 1
 
-        new_question_data = {
-            "submission_time": data_manager.current_submission_time(),
-            "view_number": 0,
-            "vote_number": 0,
-            "title" : request.form.get("title"),
-            "message": request.form.get("message"),
-            "image": "",
-            "id": new_id
-        }
-        questions.append(new_question_data)
-        connection.add_new_question(questions)
+            new_question_data = {
+                "submission_time": data_manager.current_submission_time(),
+                "view_number": 0,
+                "vote_number": 0,
+                "title": request.form.get("title"),
+                "message": request.form.get("message"),
+                "image": "",
+                "id": new_id
+            }
+            questions.append(new_question_data)
+            connection.add_new_question(questions)
 
-        return redirect(url_for('route_question', question_id=new_id))
+            return redirect(url_for('route_question', question_id=new_id))
 
-    return render_template("new_question.html")
+        return render_template("new_question.html")
 
 
 @app.route('/answer/<actual_id>', methods=['GET', 'POST'])
@@ -59,6 +75,7 @@ def route_answer(actual_id):
                 if key == "id":
                     id_list.append(int(value))
         new_id = max(id_list) + 1
+
         new_answer_data = {
             "submission_time": data_manager.current_submission_time(),
             "vote_number": 0,
@@ -82,10 +99,16 @@ def route_delete_question(question_id):
 
     return redirect('/')
 
+@app.route('/answer/<actual_id>/delete', methods=['GET', 'POST'])
+def route_delete_answer(actual_id):
+    answers = data_manager.delete_answer(actual_id)
+    connection.add_new_answer(answers)
+
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
-        port=5000,
+        port=7000,
         debug=True,
     )
