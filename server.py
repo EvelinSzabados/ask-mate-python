@@ -63,7 +63,7 @@ def route_answer(actual_id):
     if request.method == 'POST':
         answers = connection.get_all_answers()
         new_id = len(answers)
-        new_answer_data={}
+
         new_answer_data = {
             "submission_time": data_manager.current_submission_time(),
             "vote_number": 0,
