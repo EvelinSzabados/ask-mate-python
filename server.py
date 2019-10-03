@@ -35,6 +35,21 @@ def route_question_vote(question_id, question_vote):
     connection.add_new_question(questions)
     return redirect(url_for('route_question', question_id=question_id))
 
+@app.route('/question/<question_id>/<answer_vote>/<answer_id>')
+def route_answer_vote(question_id, answer_vote, answer_id):
+    answers = connection.get_all_answers()
+
+    for line in answers:
+        if line["id"] == answer_id:
+            if answer_vote == "up":
+                line["vote_number"] = int(line["vote_number"])+1
+
+            if answer_vote == "down" and int(line["vote_number"]):
+                line["vote_number"] = int(line["vote_number"])-1
+
+    connection.add_new_answer(answers)
+    return redirect(url_for('route_question', question_id=question_id))
+
 
 @app.route('/new_question', methods=['GET', 'POST'])
 def route_new_question():
@@ -102,6 +117,7 @@ def route_delete_question(question_id):
     connection.add_new_question(questions)
 
     return redirect('/')
+
 
 @app.route('/answer/<actual_id>/<question_id>/delete', methods=['GET', 'POST'])
 def route_delete_answer(actual_id, question_id):
