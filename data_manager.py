@@ -41,9 +41,8 @@ def get_actual_question(question_id):
     questions = convert_questions()
     actual_question = []
     for line in questions:
-        for key, value in line.items():
-            if value == question_id:
-                actual_question.append(dict(line))
+        if line["id"] == question_id:
+            actual_question.append(dict(line))
     return actual_question
 
 def get_actual_answer(question_id):

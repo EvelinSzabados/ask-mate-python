@@ -31,46 +31,38 @@ def route_question_vote(question_id, question_vote):
 
             if question_vote == "down" and int(line["vote_number"]) > 0:
                 line["vote_number"] = int(line["vote_number"])-1
+
     connection.add_new_question(questions)
     return redirect(url_for('route_question', question_id=question_id))
 
 
 @app.route('/new_question', methods=['GET', 'POST'])
 def route_new_question():
-    if request.method == 'POST':
-        questions = connection.get_all_questions()
-        new_data = {}
-        id_list = []
-        for i in questions:
-            for key, value in i.items():
-                if key == "id":
-                    id_list.append(int(value))
-        new_id = max(id_list)
+        if request.method == 'POST':
+            questions = connection.get_all_questions()
 
-        new_data["submission_time"] = data_manager.current_submission_time()
-        new_data["view_number"] = 0
-        new_data["vote_number"] = 0
-        new_data["title"] = request.form.get("title")
-        new_data["message"] = request.form.get("message")
-        new_data["image"] = ""
-        new_data["id"] = str(int(new_id) + 1)
-        new_id= str(int(new_id) + 1)
-        questions.append(new_data)
+            id_list = []
+            for i in questions:
+                for key, value in i.items():
+                    if key == "id":
+                        id_list.append(int(value))
+            new_id = max(id_list) + 1
 
-        with open("sample_data/question.csv", mode="w") as data_file:
-            fieldnames = ['id', 'submission_time', 'view_number', 'vote_number', 'title', 'message', 'image']
-            data_writer = csv.DictWriter(data_file, delimiter=',', fieldnames=fieldnames)
-            data_writer.writeheader()
+            new_question_data = {
+                "submission_time": data_manager.current_submission_time(),
+                "view_number": 0,
+                "vote_number": 0,
+                "title": request.form.get("title"),
+                "message": request.form.get("message"),
+                "image": "",
+                "id": new_id
+            }
+            questions.append(new_question_data)
+            connection.add_new_question(questions)
 
-            for data in questions:
-                data_writer.writerow(data)
+            return redirect(url_for('route_question', question_id=new_id))
 
-        actual_question = data_manager.get_actual_question(new_id)
-        actual_answers = data_manager.get_actual_answer(new_id)
-
-        return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
-
-    return render_template("new_question.html")
+        return render_template("new_question.html")
 
 
 @app.route('/answer/<actual_id>', methods=['GET', 'POST'])
