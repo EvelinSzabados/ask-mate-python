@@ -34,3 +34,12 @@ def add_new_answer(answers):
         for data in answers:
             data_writer.writerow(data)
 
+def add_new_question(questions):
+
+    with open("sample_data/question.csv", mode="w") as data_file:
+        fieldnames = ['id', 'submission_time', 'view_number', 'vote_number', 'title', 'message', 'image']
+        data_writer = csv.DictWriter(data_file, delimiter=',', fieldnames=fieldnames)
+        data_writer.writeheader()
+
+        for data in questions:
+            data_writer.writerow(data)
