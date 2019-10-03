@@ -7,7 +7,7 @@
     <h1>Ask mate</h1>
 
 {% for question in questions %}
-    <p><a href="{{ url_for('route_question', question_id=question['id']) }}">{{ question['title'] }}</a></p>
+    <p class="front-links"><a href="{{ url_for('route_question', question_id=question['id']) }}">{{ question['title'] }}</a></p>
 
 {% endfor %}
     <a href="/new_question"><input type="button" class="button" value="Add new question"></a>
