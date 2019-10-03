@@ -26,7 +26,7 @@
             {% endfor %}
 
     </table>
-    <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <img class="fa-thumbs-down"src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px">
+    <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img class="fa-thumbs-down"src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px">
     </div>
     <br>
      <h4>Answers</h4>
