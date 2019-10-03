@@ -61,3 +61,10 @@ def delete_question(question_id):
         if question["id"] == question_id:
             questions.remove(question)
     return questions
+
+def delete_answer(actual_id):
+    answers = connection.get_all_answers()
+    for answer in answers:
+        if answer["id"] == actual_id:
+            answers.remove(answer)
+    return answers
