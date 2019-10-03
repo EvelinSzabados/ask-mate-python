@@ -74,7 +74,11 @@ def route_answer(actual_id):
             for key, value in i.items():
                 if key == "id":
                     id_list.append(int(value))
-        new_id = max(id_list) + 1
+        if len(id_list) == 0:
+            new_id = 1
+        else:
+            new_id = max(id_list) + 1
+
 
         new_answer_data = {
             "submission_time": data_manager.current_submission_time(),
