@@ -82,6 +82,14 @@ def route_answer(actual_id):
     return render_template('answer.html', form_url=url_for('route_answer', actual_id=actual_id))
 
 
+@app.route('/question/<question_id>/delete', methods=['GET', 'POST'])
+def route_delete_question(question_id):
+    questions = data_manager.delete_question(question_id)
+    connection.add_new_question(questions)
+
+    return redirect('/')
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
