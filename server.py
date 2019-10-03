@@ -64,18 +64,13 @@ def route_answer(actual_id):
         answers = connection.get_all_answers()
         new_id = len(answers)
         new_answer_data={}
-        """new_answer_data = {
+        new_answer_data = {
             "submission_time": data_manager.current_submission_time(),
             "vote_number": 0,
             "question_id": int(actual_id),
             "message": request.form.get("answer"),
             "id": new_id
-        }"""
-        new_answer_data["submission_time"] = data_manager.current_submission_time()
-        new_answer_data["vote_number"] = 0
-        new_answer_data["question_id"] = int(actual_id)
-        new_answer_data["message"] = request.form.get("answer")
-        new_answer_data["id"] = new_id
+        }
 
         answers.append(new_answer_data)
         connection.add_new_answer(answers)
