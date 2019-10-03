@@ -25,19 +25,12 @@ def get_all_answers():
     return answers
 
 
-def add_new_question(question, append=True):
-    existing_data = get_all_questions()
+def add_new_answer(answers):
+    with open("sample_data/answer.csv", mode="w") as data_file:
+        fieldnames = ['id', 'submission_time', 'vote_number', 'question_id', 'message']
+        data_writer = csv.DictWriter(data_file, delimiter=',', fieldnames=fieldnames)
+        data_writer.writeheader()
 
-    with open('question.csv', 'w', newline='', encoding='utf-8') as csv_file:
-        writer = csv.DictWriter(csv_file, fieldnames=DATA_HEADER)
-        writer.writeheader()
+        for data in answers:
+            data_writer.writerow(data)
 
-        for row in existing_data:
-            if not append:
-                if row['id'] == question['id']:
-                    row = question
-
-            writer.writerow(row)
-
-        if append:
-            writer.writerow(question)

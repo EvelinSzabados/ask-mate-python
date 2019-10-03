@@ -1,7 +1,2 @@
 id,submission_time,view_number,vote_number,title,message,image
-1,1506950038,15,9,Wordpress loading multiple jQuery Versions,"I developed a plugin that uses the jquery booklet plugin (http://builtbywill.com/booklet/#/) this plugin binds a function to $ so I cann call $('.myBook').booklet();
-app.js (bundled file with webpack, including jquery)",images/image1.png
-2,1506863638,1364,57,Drawing canvas with an image picked with Cordova Camera Plugin,"I'm getting an image from device and drawing a canvas with filters using Pixi JS.,
-",
-3,1570022482,0,0,How to use len() in Jinja2?,Looking for the lenght of a dictionary,
-4,1570041102,0,0,What is variable shadowing?,Need something useful for my PA.,
+0,1506950038,29,7,How to make lists in Python?	I am totally new to this any hints?

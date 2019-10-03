@@ -14,7 +14,6 @@ def convert_questions():
                 line[key] = str(converted_time)
     return converted_questions
 
-
 def convert_answers():
     converted_time = None
     converted_answers = connection.get_all_answers()
@@ -32,13 +31,11 @@ def get_next_id():
 
     return str(int(existing_data[-1]['id']) + 1)
 
-
 def current_submission_time():
 
     submission_time = int(time.time())
 
     return submission_time
-
 
 def get_actual_question(question_id):
     questions = convert_questions()
@@ -49,7 +46,6 @@ def get_actual_question(question_id):
                 actual_question.append(dict(line))
     return actual_question
 
-
 def get_actual_answer(question_id):
     answers = convert_answers()
     actual_answers = []
@@ -57,3 +53,4 @@ def get_actual_answer(question_id):
         if answer["question_id"] == question_id:
             actual_answers.append(dict(answer))
     return actual_answers
+

@@ -29,7 +29,7 @@ def route_new_question():
         for i in questions:
             for key, value in i.items():
                 if key == "id":
-                    id_list.append(value)
+                    id_list.append(int(value))
         new_id = max(id_list)
 
         new_data["submission_time"] = data_manager.current_submission_time()
@@ -62,29 +62,23 @@ def route_new_question():
 def route_answer(actual_id):
     if request.method == 'POST':
         answers = connection.get_all_answers()
-        new_answer_data = {}
-        id_list = []
-        for i in answers:
-            for key, value in i.items():
-                if key == "id":
-                    id_list.append(value)
-        new_id = max(id_list)
-
+        new_id = len(answers)
+        new_answer_data={}
+        """new_answer_data = {
+            "submission_time": data_manager.current_submission_time(),
+            "vote_number": 0,
+            "question_id": int(actual_id),
+            "message": request.form.get("answer"),
+            "id": new_id
+        }"""
         new_answer_data["submission_time"] = data_manager.current_submission_time()
         new_answer_data["vote_number"] = 0
         new_answer_data["question_id"] = int(actual_id)
         new_answer_data["message"] = request.form.get("answer")
-        new_answer_data["id"] = int(new_id) + 1
+        new_answer_data["id"] = new_id
 
         answers.append(new_answer_data)
-
-        with open("sample_data/answer.csv", mode="w") as data_file:
-            fieldnames = ['id', 'submission_time', 'vote_number', 'question_id','message']
-            data_writer = csv.DictWriter(data_file, delimiter=',', fieldnames=fieldnames)
-            data_writer.writeheader()
-
-            for data in answers:
-                data_writer.writerow(data)
+        connection.add_new_answer(answers)
 
         return redirect(url_for('route_question', question_id=actual_id))
 
