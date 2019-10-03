@@ -6,6 +6,13 @@ body{
     color:#404040;
 
 }
+.front-h1{
+    text-align: right;
+}
+h2{
+    color: cadetblue;
+    text-transform: capitalize;
+}
 .front-links {
     text-indent:2em;
     list-style-type:disc;
@@ -18,13 +25,18 @@ body{
     border-color: #ffffff;
     border-left: 40px solid #444444;
 }
+.container-box{
+    box-shadow: 5px 0px 10px #444444;
+    margin:0px auto;
+    width:70%;
 
+}
 #container{
     background-color: white;
     padding:20px;
-    width: 70%;
+    width: 100%;
     margin: 0px auto;
-    box-shadow: 0px 0px 15px #444444;
+
 }
 #container .table-container img{
     padding: 10px;
@@ -55,6 +67,7 @@ body{
 #container h1{
     color: dimgray;
     text-transform: uppercase;
+
 }
 #container .answers_table {
     width: auto;
@@ -182,4 +195,14 @@ textarea{
     font-size: 16px;
     border:1px solid #ccc;
     padding: 15px;
+}
+footer{
+    padding: 20px;
+    text-align: center;
+    background-color: cadetblue;
+    color: white;
+    width: 100%;
+    margin:0px auto;
+    font-size: small;
+
 }

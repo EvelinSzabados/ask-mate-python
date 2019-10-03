@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Ask mate</h1>
+    <h1 class="front-h1">Ask mate</h1>
+    <h2>List of questions</h2>
 
 {% for question in questions %}
     <p class="front-links"><a href="{{ url_for('route_question', question_id=question['id']) }}">{{ question['title'] }}</a></p>
