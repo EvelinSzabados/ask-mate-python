@@ -20,6 +20,21 @@ def route_question(question_id: int):
     return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
 
 
+@app.route('/question/<question_id>/<question_vote>')
+def route_question_vote(question_id, question_vote):
+    questions = connection.get_all_questions()
+
+    for line in questions:
+        for key, value in line.items():
+            if line["id"] == question_id:
+                if question_vote == "up":
+                    line["vote_number"] = int(value)+1
+                if question_vote == "down" and int(value) > 0:
+                    line["vote_number"] = int(value)-1
+    connection.add_new_question(questions)
+    return redirect(url_for('route_question', question_id=question_id))
+
+
 @app.route('/new_question', methods=['GET', 'POST'])
 def route_new_question():
     if request.method == 'POST':
@@ -88,6 +103,6 @@ def route_answer(actual_id):
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
-        port=5000,
+        port=3000,
         debug=True,
     )
