@@ -4,3 +4,4 @@ app.js (bundled file with webpack, including jquery)",images/image1.png
 2,1506863638,1364,57,Drawing canvas with an image picked with Cordova Camera Plugin,"I'm getting an image from device and drawing a canvas with filters using Pixi JS.,
 ",
 3,1570022482,0,0,How to use len() in Jinja2?,Looking for the lenght of a dictionary,
+4,1570041102,0,0,What is variable shadowing?,Need something useful for my PA.,

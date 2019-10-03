@@ -58,8 +58,8 @@ def route_new_question():
     return render_template("new_question.html")
 
 
-@app.route('/answer', methods=['GET', 'POST'])
-def route_answer():
+@app.route('/answer/<actual_id>', methods=['GET', 'POST'])
+def route_answer(actual_id):
     if request.method == 'POST':
         answers = connection.get_all_answers()
         new_answer_data = {}
@@ -72,10 +72,10 @@ def route_answer():
 
         new_answer_data["submission_time"] = data_manager.current_submission_time()
         new_answer_data["vote_number"] = 0
-        new_answer_data["question_id"] = "question_id"
+        new_answer_data["question_id"] = int(actual_id)
         new_answer_data["message"] = request.form.get("answer")
-        new_answer_data["id"] = str(int(new_id) + 1)
-        new_id= str(int(new_id) + 1)
+        new_answer_data["id"] = int(new_id) + 1
+
         answers.append(new_answer_data)
 
         with open("sample_data/answer.csv", mode="w") as data_file:
@@ -86,13 +86,9 @@ def route_answer():
             for data in answers:
                 data_writer.writerow(data)
 
-        actual_question = data_manager.get_actual_question(new_id)
-        actual_answers = data_manager.get_actual_answer(new_id)
+        return redirect(url_for('route_question', question_id=actual_id))
 
-        #return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
-        return redirect("/")
-
-    return render_template('answer.html')
+    return render_template('answer.html', form_url=url_for('route_answer', actual_id=actual_id))
 
 
 if __name__ == '__main__':

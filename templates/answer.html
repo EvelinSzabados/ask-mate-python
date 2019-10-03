@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>Post answer</h1>
-    <form action="/answer" method="post">
+    <form action="{{ form_url }}" method="post">
         <p>
             <label for="answer">Answer:</label><br>
             <input type="text" name="answer" id="answer" required minlength="5">

@@ -1,16 +1,14 @@
 id,submission_time,vote_number,question_id,message
 0,1493398154,4,1,You need to use brackets: my_list = []
 1,1493088154,35,1,Look it up in the Python docs
-2,7645342,3,3,Helloka
-3,1570024101,0,<question_id>,Nem tudom
-4,1570024135,0,<question_id>,Még egy nem tudom
-5,1570024233,0,question_id,Még egy nem tudom
-6,1570024415,0,question_id,Halacska
-7,1570024435,0,question_id,Halacska
-8,1570024522,0,question_id,könyv
-9,1570024696,0,question_id,Halacska
-10,1570024728,0,question_id,Faszaaa
-10,1570024882,0,question_id,faszom
-10,1570025048,0,question_id,Még egy nem tudom
-10,1570025326,0,question_id,könyv
-10,1570025566,0,question_id,Még egy nem tudom
+2,1570089333,0,4,Nem tudom
+3,1570089357,0,3,Halacska
+4,1570089380,0,3,kalapács
+5,1570089386,0,3,Evelin tudja
+6,1570089404,0,3,De ki az az Evelin?
+7,1570089412,0,3,nem tudom
+8,1570089430,0,2,Olivér te király
+9,1570089439,0,2,Papa mama kisunoka
+10,1570089461,0,1,Alap váza
+10,1570089469,0,1,aranyos kiskutya
+10,1570090640,0,1,valami
