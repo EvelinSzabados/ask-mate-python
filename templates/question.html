@@ -40,6 +40,7 @@
                     {% endif %}
                 {% endfor %}
             <p class="answer_content">{{ data["message"]}}</p>
+          <a href="{{ url_for('route_delete_answer',actual_id=data["id"] )}}"><input type="button" class="button" value="Delete Answer"></a>
             {% endfor %}
         {% else %}
             <p><i>No answers posted yet!</i></p>
@@ -48,4 +49,5 @@
      </div>
 
      <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post answer"></a><a href="/"><input type="button" class="button" value="Back to home"></a>
+    <a href="{{ url_for('route_delete_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Delete"></a>
 {% endblock %}

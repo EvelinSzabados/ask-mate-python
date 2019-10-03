@@ -54,3 +54,17 @@ def get_actual_answer(question_id):
             actual_answers.append(dict(answer))
     return actual_answers
 
+
+def delete_question(question_id):
+    questions = connection.get_all_questions()
+    for question in questions:
+        if question["id"] == question_id:
+            questions.remove(question)
+    return questions
+
+def delete_answer(actual_id):
+    answers = connection.get_all_answers()
+    for answer in answers:
+        if answer["id"] == actual_id:
+            answers.remove(answer)
+    return answers
