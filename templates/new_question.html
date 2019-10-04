@@ -8,11 +8,11 @@
      <form action="/new_question" method="post">
         <p>
             <label for="title">Question:</label><br>
-            <input type="text" name="title" id="title" required minlength="5">
+            <input type="text" name="title" id="title" required minlength="5" autocomplete="off">
         </p>
         <p>
             <label for="message">Detail:</label><br>
-            <textarea name="message" id="message" cols="40" rows="4" required></textarea>
+            <textarea name="message" id="message" cols="40" rows="4" required autocomplete="off"></textarea>
         </p>
     <a href="/"><input type="button" class="button" value="Back to home"></a>
     <button type="submit" class="button" >Submit</button>

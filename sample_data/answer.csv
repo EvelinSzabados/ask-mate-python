@@ -1,3 +1,4 @@
 id,submission_time,vote_number,question_id,message
-1,1570117058,4,6,"To get the raw data, use request.data."
+1,1570117058,5,6,"To get the raw data, use request.data."
 2,1570118024,2,7,You can use send_from_directory to send files from a directory
+3,1570173384,0,6,"For JSON posted with content type application/json, use request.get_json()."
