@@ -8,9 +8,9 @@
     <form action="{{ form_url }}" method="post">
         <p>
             <label for="answer">Answer:</label><br>
-            <input type="text" name="answer" id="answer" required minlength="5">
+            <input type="text" name="answer" id="answer" required minlength="5" autocomplete="off">
         </p>
 
     <a href="/"><input type="button" class="button" value="Back to home"></a>
-        <input type="submit" class="button" value="submit"></form>
+        <input type="submit" class="button" value="Submit"></form>
 {% endblock %}

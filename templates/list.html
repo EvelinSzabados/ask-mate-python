@@ -4,10 +4,12 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Ask mate</h1>
+    <h1 class="front-h1">Ask mate</h1>
+    <h2>List of questions</h2>
+    <p style="font-size: small; color: gray; margin-left: 20px; "><i>Click on the question to display details</i></p>
 
 {% for question in questions %}
-    <p><a href="{{ url_for('route_question', question_id=question['id']) }}">{{ question['title'] }}</a></p>
+    <p class="front-links"><a href="{{ url_for('route_question', question_id=question['id']) }}">{{ question['title'] }}</a></p>
 
 {% endfor %}
     <a href="/new_question"><input type="button" class="button" value="Add new question"></a>

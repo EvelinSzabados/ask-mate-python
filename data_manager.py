@@ -5,23 +5,26 @@ from datetime import datetime
 
 
 def convert_questions():
-    converted_time = None
+
     converted_questions = connection.get_all_questions()
     for line in converted_questions:
         for key, value in line.items():
             if key == "submission_time":
                 converted_time = datetime.fromtimestamp(int(value))
                 line[key] = str(converted_time)
+    converted_questions.sort(key=lambda x: x['submission_time'], reverse=True)
     return converted_questions
 
+
 def convert_answers():
-    converted_time = None
+
     converted_answers = connection.get_all_answers()
     for line in converted_answers:
         for key, value in line.items():
             if key == "submission_time":
                 converted_time = datetime.fromtimestamp(int(value))
                 line[key] = str(converted_time)
+    converted_answers.sort(key=lambda x: x['submission_time'], reverse=True)
     return converted_answers
 
 def get_next_id():
@@ -59,7 +62,9 @@ def delete_question(question_id):
     for question in questions:
         if question["id"] == question_id:
             questions.remove(question)
+
     return questions
+
 
 def delete_answer(actual_id):
     answers = connection.get_all_answers()

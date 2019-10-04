@@ -29,10 +29,25 @@ def route_question_vote(question_id, question_vote):
             if question_vote == "up":
                 line["vote_number"] = int(line["vote_number"])+1
 
-            if question_vote == "down" and int(line["vote_number"]) > 0:
+            if question_vote == "down" and int(line["vote_number"]):
                 line["vote_number"] = int(line["vote_number"])-1
 
     connection.add_new_question(questions)
+    return redirect(url_for('route_question', question_id=question_id))
+
+@app.route('/question/<question_id>/<answer_vote>/<answer_id>')
+def route_answer_vote(question_id, answer_vote, answer_id):
+    answers = connection.get_all_answers()
+
+    for line in answers:
+        if line["id"] == answer_id:
+            if answer_vote == "up":
+                line["vote_number"] = int(line["vote_number"])+1
+
+            if answer_vote == "down" and int(line["vote_number"]):
+                line["vote_number"] = int(line["vote_number"])-1
+
+    connection.add_new_answer(answers)
     return redirect(url_for('route_question', question_id=question_id))
 
 
@@ -74,7 +89,11 @@ def route_answer(actual_id):
             for key, value in i.items():
                 if key == "id":
                     id_list.append(int(value))
-        new_id = max(id_list) + 1
+        if len(id_list) == 0:
+            new_id = 1
+        else:
+            new_id = max(id_list) + 1
+
 
         new_answer_data = {
             "submission_time": data_manager.current_submission_time(),
@@ -99,12 +118,13 @@ def route_delete_question(question_id):
 
     return redirect('/')
 
-@app.route('/answer/<actual_id>/delete', methods=['GET', 'POST'])
-def route_delete_answer(actual_id):
+
+@app.route('/answer/<actual_id>/<question_id>/delete', methods=['GET', 'POST'])
+def route_delete_answer(actual_id, question_id):
     answers = data_manager.delete_answer(actual_id)
     connection.add_new_answer(answers)
 
-    return redirect('/')
+    return redirect(url_for('route_question', question_id=question_id))
 
 if __name__ == '__main__':
     app.run(

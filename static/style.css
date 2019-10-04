@@ -1,17 +1,42 @@
 body{
     font-family: Verdana, monospace;
-    background-color: #cccccc;
-    margin-top: 50px;
+    background-image: linear-gradient(-90deg,#cccccc , #B8C1C0);
+    margin-top: 100px;
     padding:0px;
     color:#404040;
 
 }
+.front-h1{
+    text-align: right;
+}
+h2{
+    color: cadetblue;
+    text-transform: capitalize;
+}
+.front-links {
+    text-indent:2em;
+    list-style-type:disc;
+    padding: 10px 0px 10px 0px;
+    border: 1px solid #eeeeee;
+    border-left: 5px solid cadetblue;
+}
+.front-links:hover{
+    transition: 0.5s;
+    border-color: #ffffff;
+    border-left: 40px solid #444444;
+}
+.container-box{
+    box-shadow: 0px 0px 10px #444444;
+    margin:0px auto;
+    width:70%;
 
+}
 #container{
     background-color: white;
     padding:20px;
-    width: 70%;
+    width: 100%;
     margin: 0px auto;
+
 }
 #container .table-container img{
     padding: 10px;
@@ -42,6 +67,7 @@ body{
 #container h1{
     color: dimgray;
     text-transform: uppercase;
+
 }
 #container .answers_table {
     width: auto;
@@ -87,14 +113,7 @@ body{
 method{
     padding:0px;
 }
-.update_link{
-    text-decoration: none;
-    color: cadetblue;
-    font-weight: bold;
-}
-.update_link:hover{
-    color: darkgrey;
-}
+
 #container .button{
   background-color: #eeeeee;
   border: none;
@@ -109,7 +128,8 @@ method{
 }
 #container .button:hover{
   background-color: #cccccc;
-    transition: 0.3s;
+    color:white;
+    transition: 1s;
 
 }
 #container .button_back{
@@ -127,7 +147,7 @@ method{
 #container .button_back:hover{
     background-color: darkgrey;
     color:white;
-    transition: 0.3s;
+    transition: 0.5s;
 
 }
 #container .button_update{
@@ -154,6 +174,7 @@ method{
 #container a:hover{
     color: cadetblue;
     transition: 0.3s;
+
 }
 input{
     padding:10px;
@@ -174,4 +195,14 @@ textarea{
     font-size: 16px;
     border:1px solid #ccc;
     padding: 15px;
+}
+footer{
+    padding: 20px;
+    text-align: center;
+    background-color: cadetblue;
+    color: white;
+    width: 100%;
+    margin:0px auto;
+    font-size: small;
+
 }
