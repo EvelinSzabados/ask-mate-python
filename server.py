@@ -22,18 +22,12 @@ def route_question(question_id):
 
 @app.route('/question/<question_id>/<question_vote>')
 def route_question_vote(question_id, question_vote):
-    questions = connection.get_all_questions()
 
-    for line in questions:
-        if line["id"] == question_id:
-            if question_vote == "up":
-                line["vote_number"] = int(line["vote_number"])+1
+    data_manager.question_vote(question_vote, question_id)
 
-            if question_vote == "down" and int(line["vote_number"]):
-                line["vote_number"] = int(line["vote_number"])-1
 
-    connection.add_new_question(questions)
     return redirect(url_for('route_question', question_id=question_id))
+
 
 @app.route('/question/<question_id>/<answer_vote>/<answer_id>')
 def route_answer_vote(question_id, answer_vote, answer_id):
