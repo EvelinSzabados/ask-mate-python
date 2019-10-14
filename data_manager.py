@@ -60,6 +60,20 @@ def get_actual_answer(cursor, id):
 
 
 @connection.connection_handler
+def get_actual_question_by_answer_id(cursor, answer_id):
+    cursor.execute("SELECT question_id FROM answer WHERE answer.id=%(answer_id)s;",
+                   {'answer_id': answer_id})
+    return cursor.fetchall()
+
+
+#     questions = convert_questions()
+#     actual_question = []
+#     for line in questions:
+#         if line["id"] == question_id:
+#             actual_question.append(dict(line))
+#     return actual_question
+
+@connection.connection_handler
 def delete_question(cursor, id):
     cursor.execute("DELETE FROM question WHERE id=%(id)s", {'id': id})
 
