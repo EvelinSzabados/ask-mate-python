@@ -36,7 +36,7 @@
                 <p class="answer_header">
                 {% for key, value in data.items() %}
                     {% if  key != "message" %}
-                        {{ key+ ": " + value + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
+                        {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
                     {% endif %}
                 {% endfor %}
             <p class="answer_content">{{ data["message"]}}</p>
