@@ -75,6 +75,14 @@ def get_actual_question_by_answer_id(cursor, answer_id):
 
 @connection.connection_handler
 def delete_question(cursor, id):
+
+
+    cursor.execute("SELECT id FROM answer WHERE question_id=%(id)s", {'id': id})
+    answer_id = cursor.fetchall()
+    cursor.execute("DELETE FROM comment WHERE question_id=%(id)s", {'id': id})
+    cursor.execute("DELETE FROM comment WHERE answer_id=%(id)s", {'id': answer_id[0]["id"]})
+    cursor.execute("DELETE FROM answer WHERE question_id=%(id)s", {'id': id})
+    cursor.execute("DELETE FROM question_tag WHERE question_id=%(id)s", {'id': id})
     cursor.execute("DELETE FROM question WHERE id=%(id)s", {'id': id})
 
 
