@@ -15,7 +15,8 @@ def get_questions_sql(cursor):
 @connection.connection_handler
 def add_new_question(cursor, new_data):
     cursor.execute(
-        "INSERT INTO question VALUES (DEFAULT, %(submission_time)s,%(view_number)s,%(vote_number)s, %(title)s ,%(message)s,NULL) RETURNING id;",
+        "INSERT INTO question VALUES (DEFAULT, %(submission_time)s,%(view_number)s,"
+        "%(vote_number)s, %(title)s ,%(message)s,NULL) RETURNING id;",
         {'submission_time': new_data["submission_time"],
          'view_number': new_data["view_number"],
          'vote_number': new_data["vote_number"],
@@ -23,6 +24,17 @@ def add_new_question(cursor, new_data):
          'message': new_data["message"]})
     question_id = cursor.fetchall()
     return question_id
+
+
+@connection.connection_handler
+def add_new_answer(cursor, new_data):
+    cursor.execute("INSERT INTO answer VALUES (DEFAULT, %(submission_time)s,"
+                   "%(vote_number)s,%(question_id)s,%(message)s, NULL) RETURNING id;",
+                   {'submission_time': new_data["submission_time"],
+                    'question_id': new_data["question_id"],
+                    'vote_number': new_data["vote_number"],
+                    'message': new_data["message"]})
+
 
 
 # def convert_questions():
@@ -80,10 +92,12 @@ def get_actual_question(cursor, id):
 #
 @connection.connection_handler
 def get_actual_answer(cursor, id):
-    cursor.execute("SELECT * FROM answer WHERE id=%(id)s;",
+    cursor.execute("SELECT * FROM answer WHERE question_id=%(id)s;",
                    {'id': id})
     actual_answer = cursor.fetchall()
     return actual_answer
+
+
 #     answers = convert_answers()
 #     actual_answers = []
 #     for answer in answers:
@@ -92,18 +106,11 @@ def get_actual_answer(cursor, id):
 #     return actual_answers
 #
 #
-# def delete_question(question_id):
-#     questions = connection.get_all_questions()
-#     for question in questions:
-#         if question["id"] == question_id:
-#             questions.remove(question)
-#
-#     return questions
-#
-#
-# def delete_answer(actual_id):
-#     answers = connection.get_all_answers()
-#     for answer in answers:
-#         if answer["id"] == actual_id:
-#             answers.remove(answer)
-#     return answers
+@connection.connection_handler
+def delete_question(cursor, id):
+    cursor.execute("DELETE FROM question WHERE id=%(id)s", {'id': id})
+
+
+@connection.connection_handler
+def delete_answer(cursor, id):
+    cursor.execute("DELETE FROM answer WHERE id=%(id)s", {'id': id})

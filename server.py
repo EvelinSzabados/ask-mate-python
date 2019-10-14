@@ -72,28 +72,13 @@ def route_new_question():
 @app.route('/answer/<actual_id>', methods=['GET', 'POST'])
 def route_answer(actual_id):
     if request.method == 'POST':
-        answers = connection.get_all_answers()
-        id_list = []
-        for i in answers:
-            for key, value in i.items():
-                if key == "id":
-                    id_list.append(int(value))
-        if len(id_list) == 0:
-            new_id = 1
-        else:
-            new_id = max(id_list) + 1
-
-
         new_answer_data = {
             "submission_time": data_manager.current_submission_time(),
             "vote_number": 0,
             "question_id": int(actual_id),
-            "message": request.form.get("answer"),
-            "id": new_id
+            "message": request.form.get("answer")
         }
-
-        answers.append(new_answer_data)
-        connection.add_new_answer(answers)
+        data_manager.add_new_answer(new_answer_data)
 
         return redirect(url_for('route_question', question_id=actual_id))
 
@@ -102,16 +87,14 @@ def route_answer(actual_id):
 
 @app.route('/question/<question_id>/delete', methods=['GET', 'POST'])
 def route_delete_question(question_id):
-    questions = data_manager.delete_question(question_id)
-    connection.add_new_question(questions)
+    data_manager.delete_question(question_id)
 
     return redirect('/')
 
 
 @app.route('/answer/<actual_id>/<question_id>/delete', methods=['GET', 'POST'])
 def route_delete_answer(actual_id, question_id):
-    answers = data_manager.delete_answer(actual_id)
-    connection.add_new_answer(answers)
+    data_manager.delete_answer(actual_id)
 
     return redirect(url_for('route_question', question_id=question_id))
 
