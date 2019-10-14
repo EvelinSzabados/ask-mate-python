@@ -8,12 +8,12 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/list')
 def route_list():
-    questions = data_manager.convert_questions()
+    questions = data_manager.get_questions_sql()
     return render_template('list.html', questions=questions)
 
 
 @app.route('/question/<question_id>')
-def route_question(question_id: int):
+def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
     actual_answers = data_manager.get_actual_answer(question_id)
 
@@ -53,31 +53,20 @@ def route_answer_vote(question_id, answer_vote, answer_id):
 
 @app.route('/new_question', methods=['GET', 'POST'])
 def route_new_question():
-        if request.method == 'POST':
-            questions = connection.get_all_questions()
+    if request.method == 'POST':
 
-            id_list = []
-            for i in questions:
-                for key, value in i.items():
-                    if key == "id":
-                        id_list.append(int(value))
-            new_id = max(id_list) + 1
-
-            new_question_data = {
+        new_question_data = {
                 "submission_time": data_manager.current_submission_time(),
                 "view_number": 0,
                 "vote_number": 0,
                 "title": request.form.get("title"),
                 "message": request.form.get("message"),
-                "image": "",
-                "id": new_id
+                "image": ""
             }
-            questions.append(new_question_data)
-            connection.add_new_question(questions)
+        question_id = data_manager.add_new_question(new_question_data)
+        return redirect(url_for('route_question', question_id=question_id[0]["id"]))
 
-            return redirect(url_for('route_question', question_id=new_id))
-
-        return render_template("new_question.html")
+    return render_template("new_question.html")
 
 
 @app.route('/answer/<actual_id>', methods=['GET', 'POST'])
