@@ -36,38 +36,6 @@ def add_new_answer(cursor, new_data):
                     'message': new_data["message"]})
 
 
-
-# def convert_questions():
-#
-#     converted_questions = connection.get_all_questions()
-#     for line in converted_questions:
-#         for key, value in line.items():
-#             if key == "submission_time":
-#                 converted_time = datetime.fromtimestamp(int(value))
-#                 line[key] = str(converted_time)
-#     converted_questions.sort(key=lambda x: x['submission_time'], reverse=True)
-#     return converted_questions
-#
-#
-# def convert_answers():
-#
-#     converted_answers = connection.get_all_answers()
-#     for line in converted_answers:
-#         for key, value in line.items():
-#             if key == "submission_time":
-#                 converted_time = datetime.fromtimestamp(int(value))
-#                 line[key] = str(converted_time)
-#     converted_answers.sort(key=lambda x: x['submission_time'], reverse=True)
-#     return converted_answers
-#
-# def get_next_id():
-#     existing_data = connection.get_all_questions()
-#     if len(existing_data) == 0:
-#         return '1'
-#
-#     return str(int(existing_data[-1]['id']) + 1)
-
-
 def current_submission_time():
     submission_time = int(time.time())
     converted_time = datetime.fromtimestamp(int(submission_time))
@@ -83,13 +51,6 @@ def get_actual_question(cursor, id):
     return actual_question
 
 
-#     questions = convert_questions()
-#     actual_question = []
-#     for line in questions:
-#         if line["id"] == question_id:
-#             actual_question.append(dict(line))
-#     return actual_question
-#
 @connection.connection_handler
 def get_actual_answer(cursor, id):
     cursor.execute("SELECT * FROM answer WHERE question_id=%(id)s;",
@@ -98,14 +59,6 @@ def get_actual_answer(cursor, id):
     return actual_answer
 
 
-#     answers = convert_answers()
-#     actual_answers = []
-#     for answer in answers:
-#         if answer["question_id"] == question_id:
-#             actual_answers.append(dict(answer))
-#     return actual_answers
-#
-#
 @connection.connection_handler
 def delete_question(cursor, id):
     cursor.execute("DELETE FROM question WHERE id=%(id)s", {'id': id})
@@ -114,3 +67,13 @@ def delete_question(cursor, id):
 @connection.connection_handler
 def delete_answer(cursor, id):
     cursor.execute("DELETE FROM answer WHERE id=%(id)s", {'id': id})
+
+
+@connection.connection_handler
+def question_vote(cursor, vote, id):
+    if vote == "up":
+        cursor.execute("UPDATE question SET vote_number = vote_number + 1 WHERE id=%(id)s",
+                        {'id': id})
+    else:
+        cursor.execute("UPDATE question SET vote_number = vote_number - 1 WHERE id=%(id)s",
+                        {'id': id})
