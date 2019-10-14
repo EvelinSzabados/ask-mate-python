@@ -45,7 +45,7 @@ def current_submission_time():
 
 @connection.connection_handler
 def get_actual_question(cursor, id):
-    cursor.execute("SELECT * FROM question WHERE id=%(id)s;",
+    cursor.execute("SELECT * FROM question WHERE id=%(id)s ORDER BY id;",
                    {'id': id})
     actual_question = cursor.fetchall()
     return actual_question
@@ -53,7 +53,7 @@ def get_actual_question(cursor, id):
 
 @connection.connection_handler
 def get_actual_answer(cursor, id):
-    cursor.execute("SELECT * FROM answer WHERE question_id=%(id)s;",
+    cursor.execute("SELECT * FROM answer WHERE question_id=%(id)s ORDER BY id;",
                    {'id': id})
     actual_answer = cursor.fetchall()
     return actual_answer
@@ -76,4 +76,12 @@ def question_vote(cursor, vote, id):
                         {'id': id})
     else:
         cursor.execute("UPDATE question SET vote_number = vote_number - 1 WHERE id=%(id)s",
+                        {'id': id})
+@connection.connection_handler
+def answer_vote(cursor, vote, id):
+    if vote == "up":
+        cursor.execute("UPDATE answer SET vote_number = vote_number + 1 WHERE id=%(id)s",
+                        {'id': id})
+    else:
+        cursor.execute("UPDATE answer SET vote_number = vote_number - 1 WHERE id=%(id)s",
                         {'id': id})
