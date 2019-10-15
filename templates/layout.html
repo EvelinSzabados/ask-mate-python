@@ -8,7 +8,14 @@
 </head>
 <body>
 <div class="container-box">
+
 <div id="container">
+<div class="search-container">
+    <form action="/search" method="get">
+      <input type="text" name="searched_word" placeholder="Search" required autocomplete="off"><a href="/search"><input type="image" value="Search" alt="submit" class="search_icon" src="{{ url_for('static', filename="search_icon.png" )}}"></a>
+
+    </form>
+    </div>
 {% block content %}
 
 
