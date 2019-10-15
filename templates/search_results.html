@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Questions
+{% endblock %}
+
+{% block content %}
+    {% for line in search_results%}
+        <p class="front-links"><a href="/question/{{line['id']}}">{{line['title']}}</a></p>
+    {% endfor%}
+{% endblock %}

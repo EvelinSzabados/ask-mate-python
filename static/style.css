@@ -11,6 +11,11 @@ body{
     color:#404040;
 
 }
+
+.search_icon{
+    width: 40px;
+    float: left
+}
 .front-h1{
     text-align: right;
 }
@@ -273,7 +278,7 @@ input[type=checkbox] {
 .modal_link:hover{
     background-color:#cccccc ;
 }
-#x-:target {
+[id^=x-]:target {
   display: block;
   }
 [id^=x-] a {

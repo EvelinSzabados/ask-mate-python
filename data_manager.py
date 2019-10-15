@@ -3,6 +3,11 @@ import csv
 import time
 from datetime import datetime
 
+@connection.connection_handler
+def view_counter(cursor, id):
+    cursor.execute("UPDATE question SET view_number = view_number + 1 WHERE id= %(id)s",
+                   {'id': id})
+
 
 @connection.connection_handler
 def get_questions_sql(cursor):
@@ -11,6 +16,13 @@ def get_questions_sql(cursor):
 
     return all_questions
 
+
+@connection.connection_handler
+def get_questions_limited(cursor):
+    cursor.execute("SELECT * FROM question ORDER BY submission_time DESC LIMIT 5;")
+    limited_questions = cursor.fetchall()
+
+    return limited_questions
 
 @connection.connection_handler
 def add_new_question(cursor, new_data):
@@ -89,13 +101,6 @@ def get_actual_question_by_answer_id(cursor, answer_id):
     return cursor.fetchall()
 
 
-#     questions = convert_questions()
-#     actual_question = []
-#     for line in questions:
-#         if line["id"] == question_id:
-#             actual_question.append(dict(line))
-#     return actual_question
-
 @connection.connection_handler
 def delete_question(cursor, id):
 
@@ -131,3 +136,14 @@ def answer_vote(cursor, vote, id):
     else:
         cursor.execute("UPDATE answer SET vote_number = vote_number - 1 WHERE id=%(id)s",
                         {'id': id})
+
+@connection.connection_handler
+def search(cursor,searched):
+    # cursor.execute("SELECT title FROM question WHERE title like %(searched)s",
+    #                {'searched':"%{}%".format(searched)})
+
+    cursor.execute("SELECT title, id FROM question WHERE title like %(searched)s or message like %(searched)s",
+                   {'searched': '%{}%'.format(searched)})
+    search_results = cursor.fetchall()
+
+    return search_results
