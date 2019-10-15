@@ -88,6 +88,7 @@ def delete_question(cursor, id):
 
 @connection.connection_handler
 def delete_answer(cursor, id):
+    cursor.execute("DELETE FROM comment WHERE question_id=%(id)s", {'id': id})
     cursor.execute("DELETE FROM answer WHERE id=%(id)s", {'id': id})
 
 
