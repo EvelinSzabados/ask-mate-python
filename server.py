@@ -86,7 +86,7 @@ def route_delete_answer(answer_id):
     return redirect(url_for('route_question', question_id=question_id))
 
 
-@app.route('/search', methods = ['GET', 'POST'])
+@app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'GET':
         searched = request.args.get("searched_word")

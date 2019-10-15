@@ -11,6 +11,9 @@ body{
     color:#404040;
 
 }
+.search_icon{
+    width: 30px;
+}
 .front-h1{
     text-align: right;
 }
