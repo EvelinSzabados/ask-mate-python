@@ -66,13 +66,6 @@ def get_actual_question_by_answer_id(cursor, answer_id):
     return cursor.fetchall()
 
 
-#     questions = convert_questions()
-#     actual_question = []
-#     for line in questions:
-#         if line["id"] == question_id:
-#             actual_question.append(dict(line))
-#     return actual_question
-
 @connection.connection_handler
 def delete_question(cursor, id):
 
