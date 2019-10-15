@@ -5,6 +5,10 @@
 
 {% block content %}
     <h1 class="front-h1">Ask mate</h1>
+    <form action="/search" method="get">
+      <input type="text" name="title" placeholder="Search" required autocomplete="off">
+      <input type="submit" value="Search">
+    </form>
     <h2>List of questions</h2>
     <p style="font-size: small; color: gray; margin-left: 20px; "><i>Click on the question to display details</i></p>
 
