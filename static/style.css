@@ -1,3 +1,8 @@
+:root {
+  --duration: 1s;
+  --color: rgba(158, 85, 86, 1);
+}
+
 body{
     font-family: Verdana, monospace;
     background-image: linear-gradient(-90deg,#cccccc , #B8C1C0);
@@ -89,6 +94,7 @@ h2{
 #container table{
     margin: 0px auto;
     width: 99%;
+    border-collapse: collapse;
 }
 #container table th{
     padding: 15px;
@@ -207,3 +213,80 @@ footer{
     font-size: small;
 
 }
+.modalhead{
+  background:rgba(84, 84, 84, 1);
+  padding:20px;
+  margin:0px;
+  color:white;
+  font-size:16px;
+  text-transform: uppercase;
+
+}
+
+[id^=x-] {
+  display: none;
+  border: 0px solid gray;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  color:#404040;
+  padding:0px;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: var(--duration);
+  border-bottom: 0px solid rgba(84, 84, 84, 1);
+ transform: translate(-50%,-50%);
+  min-height:20%;
+  max-height: 30%;
+  min-width: 30%;
+
+  }
+
+input[type=checkbox] {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  }
+  .modalp {
+    padding:20px;
+  }
+
+.exit{
+  text-decoration:none;
+  font-size: 40px;
+  text-decoration-style: none;
+  overflow:hidden;
+  color:white;
+  margin: 5px 20px;
+
+}
+.exit:hover{
+  color: rgba(224, 159, 62, 1);
+}
+
+.modal_link{
+    padding:10px 30px;
+    margin: 10px 10px;
+    background-color: #eeeeee;
+    color: #3B666B;
+}
+.modal_link:hover{
+    background-color:#cccccc ;
+}
+#x-:target {
+  display: block;
+  }
+[id^=x-] a {
+  float: right;
+  }
+
+  @keyframes modalopen {
+    from {
+
+      opacity: 0;
+    }
+    to {
+
+      opacity: 1;
+    }
+  }
