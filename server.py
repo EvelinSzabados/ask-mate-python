@@ -16,7 +16,7 @@ def route_list():
 def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
     actual_answers = data_manager.get_actual_answer(question_id)
-
+    data_manager.view_counter(question_id)
     return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
 
 

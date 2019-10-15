@@ -3,6 +3,11 @@ import csv
 import time
 from datetime import datetime
 
+@connection.connection_handler
+def view_counter(cursor, id):
+    cursor.execute("UPDATE question SET view_number = view_number + 1 WHERE id= %(id)s",
+                   {'id': id})
+
 
 @connection.connection_handler
 def get_questions_sql(cursor):
