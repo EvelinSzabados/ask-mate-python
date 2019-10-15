@@ -16,12 +16,15 @@ def route_list():
 def route_all_list():
     questions = data_manager.get_questions_sql()
     return render_template('all_questions.html', questions=questions)
+
+
 @app.route('/question/<question_id>')
 def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
     actual_answers = data_manager.get_actual_answer(question_id)
+    actual_comment = data_manager.get_actual_comment(question_id)
     data_manager.view_counter(question_id)
-    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
+    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers,actual_comment = actual_comment)
 
 
 @app.route('/question/<question_id>/<question_vote>')
@@ -92,6 +95,22 @@ def search():
         searched = request.args.get("searched_word")
         search_results = data_manager.search(searched)
         return render_template('search_results.html', search_results=search_results)
+
+
+@app.route('/question/<question_id>/new-comment', methods=['GET', 'POST'])
+def route_comment(question_id):
+    if request.method == 'POST':
+        new_comment_data = {
+            "question_id": int(question_id),
+            "message": request.form.get("message"),
+            "submission_time": data_manager.current_submission_time(),
+        }
+        data_manager.add_new_answer(new_comment_data)
+
+        return redirect(url_for('route_question', question_id=question_id))
+
+    return render_template('comment.html', form_url=url_for('route_comment', question_id=question_id))
+
 
 if __name__ == '__main__':
     app.run(
