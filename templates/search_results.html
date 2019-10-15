@@ -5,8 +5,6 @@
 
 {% block content %}
     {% for line in search_results%}
-        {% for key,value in line.items() %}
-        <p> {{value}} </p>
+        <p><a href="/question/{{line['id']}}">{{line['title']}}</a></p>
     {% endfor%}
-{% endfor%}
 {% endblock %}
