@@ -18,6 +18,13 @@ def get_questions_sql(cursor):
 
 
 @connection.connection_handler
+def get_questions_limited(cursor):
+    cursor.execute("SELECT * FROM question ORDER BY submission_time DESC LIMIT 5;")
+    limited_questions = cursor.fetchall()
+
+    return limited_questions
+
+@connection.connection_handler
 def add_new_question(cursor, new_data):
     cursor.execute(
         "INSERT INTO question VALUES (DEFAULT, %(submission_time)s,%(view_number)s,"
