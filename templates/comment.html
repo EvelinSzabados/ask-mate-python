@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Add Comment
+{% endblock %}
+
+{% block content %}
+    <h1>Post comment</h1>
+    <form action="{{ form_url }}" method="post">
+        <p>
+            <label for="comment":</label><br>
+            <input type="text" name="message" id="comment" autocomplete="off">
+        </p>
+
+    <a href="/"><input type="button" class="button" value="Back to home"></a>
+        <input type="submit" class="button" value="Submit"></form>
+{% endblock %}

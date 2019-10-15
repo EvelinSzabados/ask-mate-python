@@ -16,8 +16,9 @@ def route_list():
 def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
     actual_answers = data_manager.get_actual_answer(question_id)
+    actual_comment = data_manager.get_actual_comment(question_id)
 
-    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
+    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers, actual_comment = actual_comment)
 
 
 @app.route('/question/<question_id>/<question_vote>')
@@ -81,6 +82,19 @@ def route_delete_answer(answer_id):
     data_manager.delete_answer(answer_id)
     return redirect(url_for('route_question', question_id=question_id))
 
+@app.route('/question/<actual_id>/new-comment', methods=['GET', 'POST'])
+def route_comment(actual_id):
+    if request.method == 'POST':
+        new_comment_data = {
+            "question_id": int(actual_id),
+            "message": request.form.get("message"),
+            "submission_time": data_manager.current_submission_time(),
+        }
+        data_manager.add_new_comment(new_comment_data)
+
+        return redirect(url_for('route_question', question_id=actual_id))
+
+    return render_template('comment.html', form_url=url_for('route_comment', actual_id=actual_id))
 
 if __name__ == '__main__':
     app.run(
