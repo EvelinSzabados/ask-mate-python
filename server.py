@@ -26,10 +26,10 @@ def route_question(question_id):
     if referrer == "http://0.0.0.0:7000" or referrer == "http://0.0.0.0:7000/list_all" \
             or referrer !="http://0.0.0.0:7000/question/{}".format(question_id):
         data_manager.view_counter(question_id)
-    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
+
     actual_comment = data_manager.get_actual_comment(question_id)
-    data_manager.view_counter(question_id)
-    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers,actual_comment = actual_comment)
+    return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers,
+                           actual_comment=actual_comment)
 
 
 @app.route('/question/<question_id>/<question_vote>')
