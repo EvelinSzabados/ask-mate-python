@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Questions
+{% endblock %}
+
+{% block content %}
+    {% for line in search_results%}
+        {% for key,value in line.items() %}
+        <p> {{value}} </p>
+    {% endfor%}
+{% endfor%}
+{% endblock %}
