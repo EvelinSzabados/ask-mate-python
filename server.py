@@ -91,8 +91,20 @@ def search():
     if request.method == 'GET':
         searched = request.args.get("searched_word")
         search_results = data_manager.search(searched)
-        print(search_results)
         return render_template('search_results.html', search_results=search_results)
+
+
+@app.route('/answer/<answer_id>/<question_id>/edit', methods=['GET', 'POST'])
+def route_edit_answer(answer_id: int, question_id: int):
+
+    if request.method == 'POST':
+        new_message = request.form.get("message")
+        data_manager.edit_answer(new_message, answer_id)
+
+        return redirect(url_for('route_question', question_id=question_id))
+    actual_answer = data_manager.get_actual_answer(question_id)
+    return render_template("edit_answer.html", form_url=url_for('route_edit_answer', answer_id=answer_id, question_id=question_id), actual_answer=actual_answer)
+
 
 if __name__ == '__main__':
     app.run(

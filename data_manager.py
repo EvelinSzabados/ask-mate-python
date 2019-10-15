@@ -124,3 +124,8 @@ def search(cursor,searched):
     search_results = cursor.fetchall()
 
     return search_results
+
+
+@connection.connection_handler
+def edit_answer(cursor, new_message, id):
+    cursor.execute("UPDATE answer SET message = %(new_message)s WHERE id=%(id)s", {'id': id, 'new_message': new_message})
