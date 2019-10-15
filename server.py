@@ -8,10 +8,14 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/list')
 def route_list():
+    limited_questions = data_manager.get_questions_limited()
+    return render_template('list.html', limited_questions=limited_questions)
+
+
+@app.route('/list_all')
+def route_all_list():
     questions = data_manager.get_questions_sql()
-    return render_template('list.html', questions=questions)
-
-
+    return render_template('all_questions.html', questions=questions)
 @app.route('/question/<question_id>')
 def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
