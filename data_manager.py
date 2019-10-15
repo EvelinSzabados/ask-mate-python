@@ -11,7 +11,7 @@ def view_counter(cursor, id):
 
 @connection.connection_handler
 def get_questions_sql(cursor):
-    cursor.execute("SELECT * FROM question;")
+    cursor.execute("SELECT * FROM question ORDER BY submission_time DESC;")
     all_questions = cursor.fetchall()
 
     return all_questions
