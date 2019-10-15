@@ -108,3 +108,14 @@ def answer_vote(cursor, vote, id):
     else:
         cursor.execute("UPDATE answer SET vote_number = vote_number - 1 WHERE id=%(id)s",
                         {'id': id})
+
+@connection.connection_handler
+def search(cursor,searched):
+    # cursor.execute("SELECT title FROM question WHERE title like %(searched)s",
+    #                {'searched':"%{}%".format(searched)})
+
+    cursor.execute("SELECT title, message FROM question WHERE title like %(searched)s or message like %(searched)s",
+                   {'searched': '%{}%'.format(searched)})
+    search_results = cursor.fetchall()
+
+    return search_results
