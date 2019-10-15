@@ -91,7 +91,6 @@ def search():
     if request.method == 'GET':
         searched = request.args.get("searched_word")
         search_results = data_manager.search(searched)
-        print(search_results)
         return render_template('search_results.html', search_results=search_results)
 
 if __name__ == '__main__':
