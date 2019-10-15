@@ -26,7 +26,7 @@
             {% endfor %}
 
     </table>
-    <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img class="fa-thumbs-down"src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px">
+        <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
     </div>
     <br>
      <h4>Answers</h4>
@@ -40,8 +40,17 @@
                     {% endif %}
                 {% endfor %}
             <p class="answer_content">{{ data["message"]}}</p>
-                <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="up",answer_id = actual_answers[loop.index0]["id"] )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="down",answer_id = actual_answers[loop.index0]["id"])}}"><img class="fa-thumbs-down"src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px">
-          <a href="{{ url_for('route_delete_answer',actual_id=data["id"], question_id = actual_question[0]["id"] )}}"><input type="button" class="button" value="Delete Answer"></a>
+
+                <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="up",answer_id = actual_answers[loop.index0]["id"] )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a><a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="down",answer_id = actual_answers[loop.index0]["id"])}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
+                <a href="#x-"><button class="button">Delete answer</button></a>
+                <input type="button" class="button" value="Edit Answer">
+                 <div id="x-"><a href="#"><span class="exit">&times;</span></a>
+                    <h3 class="modalhead">Confirm</h3>
+                        <div class="modalp">
+                            <p>Are you sure you want to delete?</p>
+                                    <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_answer',answer_id=data["id"] )}}">Yes</a>
+                        </div>
+                 </div>
             {% endfor %}
         {% else %}
             <p><i>No answers posted yet!</i></p>
@@ -50,6 +59,17 @@
      </div>
 
      <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post Answer"></a>
-    <a href="{{ url_for('route_delete_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Delete Question"></a>
+    <a href="#x-"><button class="button">Delete question</button></a>
     <a href="/"><input type="button" class="button" value="Back to home"></a>
+
+    <div id="x-"><a href="#"><span class="exit">&times;</span></a>
+    <h3 class="modalhead">Confirm</h3>
+          <div class="modalp">
+              <p>Are you sure you want to delete?</p>
+              <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_question',question_id=actual_question[0]["id"] )}}">Yes</a>
+
+
+          </div>
+      </div>
+
 {% endblock %}
