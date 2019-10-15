@@ -16,11 +16,16 @@ def route_list():
 def route_all_list():
     questions = data_manager.get_questions_sql()
     return render_template('all_questions.html', questions=questions)
+
+
 @app.route('/question/<question_id>')
 def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
     actual_answers = data_manager.get_actual_answer(question_id)
-    data_manager.view_counter(question_id)
+    referrer = request.headers.get("Referer")
+    if referrer == "http://0.0.0.0:7000" or referrer == "http://0.0.0.0:7000/list_all" \
+            or referrer !="http://0.0.0.0:7000/question/{}".format(question_id):
+        data_manager.view_counter(question_id)
     return render_template('question.html', actual_question=actual_question, actual_answers=actual_answers)
 
 
