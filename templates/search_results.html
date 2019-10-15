@@ -7,4 +7,5 @@
     {% for line in search_results%}
         <p class="front-links"><a href="/question/{{line['id']}}">{{line['title']}}</a></p>
     {% endfor%}
+    <a href="/"><input type="button" class="button" value="Back to home"></a>
 {% endblock %}
