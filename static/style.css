@@ -11,6 +11,15 @@ body{
     color:#404040;
 
 }
+.search_box{
+    border-radius: 15px;
+    border: 1px solid #cccccc;
+    padding: 20px;
+}
+.search_icon{
+    width: 40px;
+    float: left
+}
 .front-h1{
     text-align: right;
 }
