@@ -119,7 +119,8 @@ def search(cursor,searched):
     # cursor.execute("SELECT title FROM question WHERE title like %(searched)s",
     #                {'searched':"%{}%".format(searched)})
 
-    cursor.execute("SELECT title, id FROM question WHERE title like %(searched)s or message like %(searched)s",
+    cursor.execute("SELECT title, id FROM question WHERE LOWER(title) like %(searched)s "
+                   "or LOWER(message) like %(searched)s",
                    {'searched': '%{}%'.format(searched)})
     search_results = cursor.fetchall()
 
