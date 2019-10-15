@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Edit Answer
+{% endblock %}
+
+{% block content %}
+    <h1>Edit Answer</h1>
+    <form action="{{form_url}}" method="post">
+        <p>
+            <label for="message">Answer:</label><br>
+            <input type="text" name="message" id="message" size="50" autocomplete="off" value={{actual_answer[0]["message"]}}>
+        </p>
+
+        <a href="/"><input type="button" class="button" value="Back to home"></a>
+        <input type="submit" class="button" value="Submit"></form>
+{% endblock %}

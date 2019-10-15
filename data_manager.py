@@ -47,6 +47,14 @@ def add_new_answer(cursor, new_data):
                     'vote_number': new_data["vote_number"],
                     'message': new_data["message"]})
 
+@connection.connection_handler
+def add_new_comment(cursor, new_data):
+    cursor.execute("INSERT INTO comment VALUES (DEFAULT, %(question_id)s,"
+                   "NULL,%(message)s,%(submission_time)s, NULL) RETURNING id;",
+                   {'question_id': new_data["question_id"],
+                    'message': new_data["message"],
+                    'submission_time': new_data["submission_time"]})
+
 
 def current_submission_time():
     submission_time = int(time.time())
@@ -69,6 +77,21 @@ def get_actual_answer(cursor, id):
                    {'id': id})
     actual_answer = cursor.fetchall()
     return actual_answer
+
+
+@connection.connection_handler
+def get_actual_comment(cursor, id):
+    cursor.execute("SELECT * FROM comment WHERE id=%(id)s ORDER BY id;",
+                   {'id': id})
+    actual_comment = cursor.fetchall()
+    return actual_comment
+
+@connection.connection_handler
+def get_actual_comment(cursor, id):
+    cursor.execute("SELECT * FROM comment WHERE question_id=%(id)s ORDER BY id;",
+                   {'id': id})
+    actual_comment = cursor.fetchall()
+    return actual_comment
 
 
 @connection.connection_handler
@@ -125,3 +148,8 @@ def search(cursor,searched):
     search_results = cursor.fetchall()
 
     return search_results
+
+
+@connection.connection_handler
+def edit_answer(cursor, new_message, id):
+    cursor.execute("UPDATE answer SET message = %(new_message)s WHERE id=%(id)s", {'id': id, 'new_message': new_message})

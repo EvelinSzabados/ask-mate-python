@@ -28,6 +28,24 @@
     </table>
         <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
     </div>
+<br>
+     <h4>Comments</h4>
+     <div class = "answers">
+        {% if actual_comment|length >0 %}
+            {% for data in actual_comment: %}
+                <p class="answer_header">
+                {% for key, value in data.items() %}
+                    {% if  key != "message" %}
+                        {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
+                    {% endif %}
+                {% endfor %}
+            <p class="answer_content">{{ data["message"]}}</p>
+            {% endfor %}
+        {% else %}
+            <p><i>No comments posted yet!</i></p>
+      {% endif %}
+
+     </div>
     <br>
      <h4>Answers</h4>
      <div class = "answers">
@@ -43,7 +61,7 @@
 
                 <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="up",answer_id = actual_answers[loop.index0]["id"] )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a><a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="down",answer_id = actual_answers[loop.index0]["id"])}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
                 <a href="#x-{{ data["id"] }}"><button class="button">Delete answer</button></a>
-                <input type="button" class="button" value="Edit Answer">
+                 <a href="{{ url_for('route_edit_answer', answer_id=data["id"], question_id=actual_question[0]["id"])}}"><input type="button" class="button" value="Edit Answer"></a>
                      <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                         <h3 class="modalhead">Confirm</h3>
                             <div class="modalp">
@@ -59,6 +77,7 @@
      </div>
 
      <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post Answer"></a>
+   <a href="{{ url_for('route_comment',question_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post Comment"></a>
     <a href="#x-"><button class="button">Delete question</button></a>
     <a href="/"><input type="button" class="button" value="Back to home"></a>
 
