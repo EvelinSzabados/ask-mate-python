@@ -4,8 +4,13 @@
 {% endblock %}
 
 {% block content %}
-    {% for line in search_results%}
-        <p class="front-links"><a href="/question/{{line['id']}}">{{line['title']}}</a></p>
-    {% endfor%}
-    <a href="/"><input type="button" class="button" value="Back to home"></a>
+    {% if search_results| length >0 %}
+        {% for line in search_results%}
+            <p class="front-links"><a href="/question/{{line['id']}}">{{line['title']}}</a></p>
+        {% endfor%}
+    {% else %}
+        <p style="background-color: #ffe6e6;color:#9C1A1C; margin: 40px 0px 20px 0px; padding: 30px;">No search results</p>
+    {% endif %}
+    <a href="/"><input type="button" class="button_back" value="Back to home"></a>
+
 {% endblock %}
