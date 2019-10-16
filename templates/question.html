@@ -32,7 +32,7 @@
 <br>
     <div class = "comments" id="close">
     {% if actual_comment|length >0 %}
-        <a href="#nav"><span><h4>Show comments</h4></span></a>
+        <a href="#nav"><span><h4>Show comments &#8628;</h4></span></a>
         <div class = "comments" id="close">
         <div class="expandable" id="nav">
                 {% for data in actual_comment %}
@@ -45,7 +45,7 @@
                         {% endfor %}
                     <p class="comment_content">{{ data["message"]}}</p>
                     {% endif %}
-            {% endfor %}
+                {% endfor %}
             <a href="#close"><span class="close_span"><h4>Hide comments</h4></span></a>
              </div>
         {% else %}
@@ -70,22 +70,22 @@
                 <a href="#x-{{ data["id"] }}"><button class="button">Delete answer</button></a>
                  <a href="{{ url_for('route_edit_answer', answer_id=data["id"], question_id=actual_question[0]["id"])}}"><input type="button" class="button" value="Edit Answer"></a>
                 <a href="{{ url_for('route_comment_to_answer',answer_id=data["id"] )}}"><input type="button" class="button" value="Comment"></a>
+                
                 <h4>Comments</h4>
                {% if actual_comment|length >0%}
-                {% for line in actual_comment: %}
-                    {%if line["answer_id"] == data["id"]%}
-                        <p class="comment_header">
-                        {% for key, value in data.items() %}
-                            {% if  key != "message" %}
-                                {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
-                            {% endif %}
-                        {% endfor %}
-                    <p class="comment_content">{{ line["message"]}}</p>
-                    {% endif %}
-            {% endfor %}
-        {% else %}
-        <h4>Comments for question</h4>
-            <p><i>No comments posted yet!</i></p>
+                    {% for line in actual_comment: %}
+                        {%if line["answer_id"] == data["id"]%}
+                            <p class="comment_header_answers">
+                            {% for key, value in data.items() %}
+                                {% if  key != "message" %}
+                                    {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
+                                {% endif %}
+                            {% endfor %}
+                            <p class="comment_content_answer">{{ line["message"]}}</p>
+                        {% endif %}
+                {% endfor %}
+            {% else %}
+                <p><i>No comments posted yet!</i></p>
       {% endif %}
                 <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                         <h3 class="modalhead">Confirm</h3>
