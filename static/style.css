@@ -9,7 +9,7 @@ body{
     margin-top: 100px;
     padding:0px;
     color:#404040;
-
+    scroll-behavior: smooth;
 }
 .search_box{
     border-radius: 15px;
@@ -78,17 +78,17 @@ h2{
 }
 .comments{
     background-color: white;
-    margin-left: 10%;
+    margin: 10px;
 }
 .comments .comment_header{
-    color: brown;
+    color: #404040;
     font-size: 12px;
 }
 
 .comments .comment_content{
     font-size: 13px;
     padding: 10px 10px 10px 20px;
-     border-left: 6px solid brown;
+     border-left: 6px solid rgba(224, 159, 62, 1);
 }
 #container .answers img{
     padding-right:20px;
@@ -161,6 +161,26 @@ method{
   background-color: #cccccc;
     color:white;
     transition: 1s;
+
+}
+
+.button_comment{
+    background-color: transparent;
+  border: none;
+    font-weight: bold;
+  color: cadetblue;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+    max-width: 200px;
+  font-size: 16px;
+  margin: 20px 5px 0px 5px;
+  cursor: pointer;
+}
+
+.button_comment:hover{
+    color:#11557C;
+    border-bottom: 3px solid #11557C;
 
 }
 .button_back{
@@ -320,7 +340,7 @@ input[type=checkbox] {
      line-height: 2;
     padding-top: 1em;
     padding-bottom: 1em;
-     transition: 1s;
+
 
 }
 
