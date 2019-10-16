@@ -110,8 +110,13 @@ def route_edit_answer(answer_id: int, question_id: int):
         data_manager.edit_answer(new_message, answer_id)
 
         return redirect(url_for('route_question', question_id=question_id))
-    actual_answer = data_manager.get_actual_answer(question_id)
-    return render_template("edit_answer.html", form_url=url_for('route_edit_answer', answer_id=answer_id, question_id=question_id), actual_answer=actual_answer)
+    actual_answer = data_manager.get_answer_to_edit(answer_id)
+    if len(actual_answer) >0:
+        answer_to_edit = actual_answer[0]["message"]
+        return render_template("edit_answer.html", form_url=url_for('route_edit_answer', answer_id=answer_id, question_id=question_id), actual_answer=answer_to_edit)
+    else:
+        #todo: handle this
+        pass
 
 
 if __name__ == '__main__':

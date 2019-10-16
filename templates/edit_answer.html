@@ -8,7 +8,9 @@
     <form action="{{form_url}}" method="post">
         <p>
             <label for="message">Answer:</label><br>
-            <input type="text" name="message" id="message" size="50" autocomplete="off" value={{actual_answer[0]["message"]}}>
+
+        <input type="text" name="message" id="message" size="200" value="{{actual_answer}}">
+
         </p>
 
         <a href="/"><input type="button" class="button" value="Back to home"></a>

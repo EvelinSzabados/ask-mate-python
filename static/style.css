@@ -130,42 +130,44 @@ method{
     padding:0px;
 }
 
-#container .button{
+.button{
   background-color: #eeeeee;
   border: none;
   color: cadetblue;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+    max-width: 200px;
   font-size: 16px;
   margin: 20px 5px 10px 5px;
   cursor: pointer;
 }
-#container .button:hover{
+.button:hover{
   background-color: #cccccc;
     color:white;
     transition: 1s;
 
 }
-#container .button_back{
-  background-color: azure;
+.button_back{
+    background-color: transparent;
   border: none;
   color: cadetblue;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+    max-width: 200px;
+    float:right;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 20px 5px 10px 5px;
   cursor: pointer;
 }
-#container .button_back:hover{
-    background-color: darkgrey;
+.button_back:hover{
+  background-color: #cccccc;
     color:white;
-    transition: 0.5s;
+    transition: 1s;
 
 }
+
 #container .button_update{
     font-weight: bold;
     background-color: transparent;
@@ -173,9 +175,8 @@ method{
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  width: 100%;
+
   cursor: pointer;
 
 }
