@@ -101,6 +101,12 @@ def search():
         search_results = data_manager.search(searched)
         return render_template('search_results.html', search_results=search_results)
 
+
+@connection.connection_handler
+def edit_answer(cursor, new_message, id):
+    cursor.execute("UPDATE answer SET message = %(new_message)s WHERE id=%(id)s", {'id': id, 'new_message': new_message})
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
