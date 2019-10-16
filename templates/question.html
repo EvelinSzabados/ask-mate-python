@@ -35,7 +35,8 @@
         <a href="#nav"><span><h4>Show comments</h4></span></a>
         <div class = "comments" id="close">
         <div class="expandable" id="nav">
-                {% for data in actual_comment: %}
+                {% for data in actual_comment %}
+                     {%if data["answer_id"] == none %}
                         <p class="comment_header">
                         {% for key, value in data.items() %}
                             {% if  key != "message" %}
@@ -43,7 +44,7 @@
                             {% endif %}
                         {% endfor %}
                     <p class="comment_content">{{ data["message"]}}</p>
-
+                    {% endif %}
             {% endfor %}
             <a href="#close"><span class="close_span"><h4>Hide comments</h4></span></a>
              </div>
@@ -86,9 +87,6 @@
         <h4>Comments for question</h4>
             <p><i>No comments posted yet!</i></p>
       {% endif %}
-                     <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
-
-
                 <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                         <h3 class="modalhead">Confirm</h3>
                             <div class="modalp">
@@ -119,5 +117,5 @@
 
           </div>
       </div>
-
+     </div>
 {% endblock %}
