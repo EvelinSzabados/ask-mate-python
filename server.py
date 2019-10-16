@@ -112,12 +112,12 @@ def route_comment_to_question(question_id):
             "submission_time": data_manager.current_submission_time(),
         }
         data_manager.add_new_comment(new_comment_data)
-        new_message = request.form.get("message")
-        data_manager.edit_answer(new_message, answer_id)
 
         return redirect(url_for('route_question', question_id=question_id))
 
     return render_template('comment.html', form_url=url_for('route_comment_to_question', question_id=question_id))
+
+
 @app.route('/answer/<answer_id>/<question_id>/edit', methods=['GET', 'POST'])
 def route_edit_answer(answer_id: int, question_id: int):
     if request.method == 'POST':
@@ -134,6 +134,7 @@ def route_edit_answer(answer_id: int, question_id: int):
         #todo: handle this
         pass
 
+
 @app.route('/answer/<answer_id>/new-comment', methods=['GET', 'POST'])
 def route_comment_to_answer(answer_id):
     if request.method == 'POST':
@@ -147,6 +148,7 @@ def route_comment_to_answer(answer_id):
         return redirect(url_for('route_question', question_id=question_id))
 
     return render_template('comment.html', form_url=url_for('route_comment_to_answer', answer_id=answer_id))
+
 
 if __name__ == '__main__':
     app.run(
