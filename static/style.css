@@ -134,7 +134,7 @@ method{
   background-color: #eeeeee;
   border: none;
   color: cadetblue;
-  padding: 15px 32px;
+  padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -152,7 +152,7 @@ method{
   background-color: azure;
   border: none;
   color: cadetblue;
-  padding: 15px 32px;
+  padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -170,7 +170,7 @@ method{
     font-weight: bold;
     background-color: transparent;
   color: cadetblue;
-  padding: 15px 32px;
+  padding: 15px 15px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
