@@ -81,6 +81,14 @@ def get_actual_answer(cursor, id):
 
 
 @connection.connection_handler
+def get_answer_to_edit(cursor,id):
+    cursor.execute("SELECT message FROM answer WHERE id= %(id)s", {'id': id})
+    answer_to_edit = cursor.fetchall()
+
+    return answer_to_edit
+
+
+@connection.connection_handler
 def get_actual_comment(cursor, id):
     cursor.execute("SELECT * FROM comment WHERE id=%(id)s ORDER BY id;",
                    {'id': id})
@@ -149,3 +157,8 @@ def search(cursor,searched):
     search_results = cursor.fetchall()
 
     return search_results
+
+
+@connection.connection_handler
+def edit_answer(cursor, new_message, id):
+    cursor.execute("UPDATE answer SET message = %(new_message)s WHERE id=%(id)s", {'id': id, 'new_message': new_message})

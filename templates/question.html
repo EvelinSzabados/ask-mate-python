@@ -61,8 +61,7 @@
 
                 <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="up",answer_id = actual_answers[loop.index0]["id"] )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a><a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="down",answer_id = actual_answers[loop.index0]["id"])}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
                 <a href="#x-{{ data["id"] }}"><button class="button">Delete answer</button></a>
-                <input type="button" class="button" value="Edit Answer">
-
+                 <a href="{{ url_for('route_edit_answer', answer_id=data["id"], question_id=actual_question[0]["id"])}}"><input type="button" class="button" value="Edit Answer"></a>
                      <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                         <h3 class="modalhead">Confirm</h3>
                             <div class="modalp">
@@ -80,7 +79,9 @@
      <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post Answer"></a>
    <a href="{{ url_for('route_comment_to_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Comment to question"></a>
     <a href="#x-"><button class="button">Delete question</button></a>
-    <a href="/"><input type="button" class="button" value="Back to home"></a>
+
+    <a href="/"><input type="button" class="button_back" value="Back to home"></a>
+    <a href="/list_all"><input type="button" class="button_back" value="< < Back"></a>
 
     <div id="x-"><a href="#"><span class="exit">&times;</span></a>
     <h3 class="modalhead">Confirm</h3>
