@@ -27,9 +27,10 @@
 
     </table>
         <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
+       <a href="{{ url_for('route_comment_to_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button_comment" value="Comment to question"></a>
     </div>
 <br>
-
+    <div class = "comments" id="close">
     {% if actual_comment|length >0 %}
         <a href="#nav"><span><h4>Show comments</h4></span></a>
         <div class = "comments" id="close">
@@ -50,7 +51,6 @@
         <h4>Comments for question</h4>
             <p><i>No comments posted yet!</i></p>
       {% endif %}
-
      </div>
     <br>
      <h4>Answers</h4>
@@ -87,6 +87,9 @@
             <p><i>No comments posted yet!</i></p>
       {% endif %}
                      <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
+
+
+                <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                         <h3 class="modalhead">Confirm</h3>
                             <div class="modalp">
                                 <p>Are you sure you want to delete?</p>
