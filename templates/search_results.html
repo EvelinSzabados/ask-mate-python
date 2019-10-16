@@ -4,7 +4,10 @@
 {% endblock %}
 
 {% block content %}
-    {% for line in search_results%}
+    {% for line in search_results_question%}
+        <p class="front-links"><a href="/question/{{line['id']}}">{{line['title']}}</a></p>
+    {% endfor%}
+    {% for line in search_results_answer%}
         <p class="front-links"><a href="/question/{{line['id']}}">{{line['title']}}</a></p>
     {% endfor%}
     <a href="/"><input type="button" class="button" value="Back to home"></a>
