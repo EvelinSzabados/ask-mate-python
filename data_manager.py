@@ -147,17 +147,34 @@ def answer_vote(cursor, vote, id):
                         {'id': id})
 
 @connection.connection_handler
-def search(cursor,searched):
-    # cursor.execute("SELECT title FROM question WHERE title like %(searched)s",
-    #                {'searched':"%{}%".format(searched)})
-
+def search_question(cursor,searched):
     cursor.execute("SELECT title, id FROM question WHERE LOWER(title) like %(searched)s "
                    "or LOWER(message) like %(searched)s",
                    {'searched': '%{}%'.format(searched)})
     search_results = cursor.fetchall()
+    print(search_results)
 
     return search_results
 
+@connection.connection_handler
+def search_answer(cursor,searched):
+    cursor.execute("SELECT message, question_id FROM answer WHERE LOWER(message) like %(searched)s ",
+                   {'searched': '%{}%'.format(searched)})
+
+    search_results = cursor.fetchall()
+
+    def get_question_by_answer(cursor):
+        new_list = []
+        for line in search_results:
+            cursor.execute("SELECT title, id FROM question WHERE id =%(question_id)s",
+                       {'question_id': line['question_id']})
+            question_by_answer = cursor.fetchone()
+            new_list.append(question_by_answer)
+        print(new_list)
+        return new_list
+
+    question_from_answer = get_question_by_answer(cursor)
+    return question_from_answer
 
 @connection.connection_handler
 def edit_answer(cursor, new_message, id):

@@ -98,8 +98,10 @@ def route_delete_answer(answer_id):
 def search():
     if request.method == 'GET':
         searched = request.args.get("searched_word")
-        search_results = data_manager.search(searched)
-        return render_template('search_results.html', search_results=search_results)
+        search_results_question = data_manager.search_question(searched)
+        search_results_answer = data_manager.search_answer(searched)
+
+        return render_template('search_results.html', search_results_question=search_results_question, search_results_answer=search_results_answer)
 
 
 @app.route('/question/<question_id>/new-comment', methods=['GET', 'POST'])
