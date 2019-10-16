@@ -32,16 +32,16 @@
 
     {% if actual_comment|length >0 %}
         <a href="#nav"><span><h4>Show comments</h4></span></a>
-        <div class = "answers" id="close">
+        <div class = "comments" id="close">
         <div class="expandable" id="nav">
                 {% for data in actual_comment: %}
-                        <p class="answer_header">
+                        <p class="comment_header">
                         {% for key, value in data.items() %}
                             {% if  key != "message" %}
                                 {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
                             {% endif %}
                         {% endfor %}
-                    <p class="answer_content">{{ data["message"]}}</p>
+                    <p class="comment_content">{{ data["message"]}}</p>
 
             {% endfor %}
             <a href="#close"><span class="close_span"><h4>Hide comments</h4></span></a>

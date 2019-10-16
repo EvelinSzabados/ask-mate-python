@@ -76,6 +76,20 @@ h2{
     padding: 10px 10px 10px 20px;
     margin-top: 10px;
 }
+.comments{
+    background-color: white;
+    margin-left: 10%;
+}
+.comments .comment_header{
+    color: brown;
+    font-size: 12px;
+}
+
+.comments .comment_content{
+    font-size: 13px;
+    padding: 10px 10px 10px 20px;
+     border-left: 6px solid brown;
+}
 #container .answers img{
     padding-right:20px;
 }
