@@ -29,19 +29,25 @@
         <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
     </div>
 <br>
-     <h4>Comments for Question</h4>
-     <div class = "answers">
-        {% if actual_comment|length >0 %}
-            {% for data in actual_comment: %}
-                <p class="answer_header">
-                {% for key, value in data.items() %}
-                    {% if  key != "message" %}
-                        {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
-                    {% endif %}
-                {% endfor %}
-            <p class="answer_content">{{ data["message"]}}</p>
+
+    {% if actual_comment|length >0 %}
+        <a href="#nav"><span><h4>Show comments</h4></span></a>
+        <div class = "answers" id="close">
+        <div class="expandable" id="nav">
+                {% for data in actual_comment: %}
+                        <p class="answer_header">
+                        {% for key, value in data.items() %}
+                            {% if  key != "message" %}
+                                {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
+                            {% endif %}
+                        {% endfor %}
+                    <p class="answer_content">{{ data["message"]}}</p>
+
             {% endfor %}
+            <a href="#close"><span class="close_span"><h4>Hide comments</h4></span></a>
+             </div>
         {% else %}
+        <h4>Comments for question</h4>
             <p><i>No comments posted yet!</i></p>
       {% endif %}
 
