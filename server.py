@@ -102,9 +102,16 @@ def search():
         return render_template('search_results.html', search_results=search_results)
 
 
-@connection.connection_handler
-def edit_answer(cursor, new_message, id):
-    cursor.execute("UPDATE answer SET message = %(new_message)s WHERE id=%(id)s", {'id': id, 'new_message': new_message})
+@app.route('/answer/<answer_id>/<question_id>/edit', methods=['GET', 'POST'])
+def route_edit_answer(answer_id: int, question_id: int):
+
+    if request.method == 'POST':
+        new_message = request.form.get("message")
+        data_manager.edit_answer(new_message, answer_id)
+
+        return redirect(url_for('route_question', question_id=question_id))
+    actual_answer = data_manager.get_actual_answer(question_id)
+    return render_template("edit_answer.html", form_url=url_for('route_edit_answer', answer_id=answer_id, question_id=question_id), actual_answer=actual_answer)
 
 
 if __name__ == '__main__':
