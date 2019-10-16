@@ -113,6 +113,9 @@ def route_comment_to_question(question_id):
             "message": request.form.get("message"),
             "submission_time": data_manager.current_submission_time(),
         }
+        if request.form.get("message") == "":
+            return render_template('comment.html',
+                                   form_url=url_for('route_comment_to_question', question_id=question_id))
         data_manager.add_new_comment(new_comment_data)
 
         return redirect(url_for('route_question', question_id=question_id))
@@ -147,6 +150,8 @@ def route_comment_to_answer(answer_id):
             "message": request.form.get("message"),
             "submission_time": data_manager.current_submission_time(),
         }
+        if request.form.get("message") == "":
+            return render_template('comment.html', form_url=url_for('route_comment_to_answer', answer_id=answer_id))
         data_manager.add_new_comment(new_comment_data)
         return redirect(url_for('route_question', question_id=question_id))
 
