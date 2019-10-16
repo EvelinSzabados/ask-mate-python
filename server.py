@@ -137,14 +137,15 @@ def route_edit_answer(answer_id: int, question_id: int):
 
 @app.route('/answer/<answer_id>/new-comment', methods=['GET', 'POST'])
 def route_comment_to_answer(answer_id):
+    question_id = data_manager.get_actual_question_by_answer_id(answer_id)[0]['question_id']
     if request.method == 'POST':
         new_comment_data = {
+            "question_id": int(question_id),
             "answer_id": int(answer_id),
             "message": request.form.get("message"),
             "submission_time": data_manager.current_submission_time(),
         }
         data_manager.add_new_comment(new_comment_data)
-        question_id = data_manager.get_actual_question_by_answer_id(answer_id)[0]['question_id']
         return redirect(url_for('route_question', question_id=question_id))
 
     return render_template('comment.html', form_url=url_for('route_comment_to_answer', answer_id=answer_id))

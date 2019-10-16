@@ -89,6 +89,14 @@ def get_answer_to_edit(cursor,id):
 
 
 @connection.connection_handler
+def get_answer_to_comment(cursor,id):
+    cursor.execute("SELECT id FROM answer WHERE id= %(id)s", {'id': id})
+    answer_to_comment = cursor.fetchall()
+
+    return answer_to_comment
+
+
+@connection.connection_handler
 def get_actual_comment(cursor, id):
     cursor.execute("SELECT * FROM comment WHERE id=%(id)s ORDER BY id;",
                    {'id': id})
