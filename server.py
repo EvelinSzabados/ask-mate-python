@@ -104,16 +104,52 @@ def search():
         return render_template('search_results.html', search_results_question=search_results_question, search_results_answer=search_results_answer)
 
 
+@app.route('/question/<question_id>/new-comment', methods=['GET', 'POST'])
+def route_comment_to_question(question_id):
+    if request.method == 'POST':
+        new_comment_data = {
+            "question_id": int(question_id),
+            "answer_id":None,
+            "message": request.form.get("message"),
+            "submission_time": data_manager.current_submission_time(),
+        }
+        data_manager.add_new_comment(new_comment_data)
+
+        return redirect(url_for('route_question', question_id=question_id))
+
+    return render_template('comment.html', form_url=url_for('route_comment_to_question', question_id=question_id))
+
+
 @app.route('/answer/<answer_id>/<question_id>/edit', methods=['GET', 'POST'])
 def route_edit_answer(answer_id: int, question_id: int):
-
     if request.method == 'POST':
         new_message = request.form.get("message")
         data_manager.edit_answer(new_message, answer_id)
 
         return redirect(url_for('route_question', question_id=question_id))
-    actual_answer = data_manager.get_actual_answer(question_id)
-    return render_template("edit_answer.html", form_url=url_for('route_edit_answer', answer_id=answer_id, question_id=question_id), actual_answer=actual_answer)
+    actual_answer = data_manager.get_answer_to_edit(answer_id)
+    if len(actual_answer) > 0:
+        answer_to_edit = actual_answer[0]["message"]
+        return render_template("edit_answer.html", form_url=url_for('route_edit_answer', answer_id=answer_id, question_id=question_id),
+                               actual_answer=answer_to_edit, redirect_url=url_for('route_question', question_id=question_id))
+    else:
+        #todo: handle this
+        pass
+
+
+@app.route('/answer/<answer_id>/new-comment', methods=['GET', 'POST'])
+def route_comment_to_answer(answer_id):
+    if request.method == 'POST':
+        new_comment_data = {
+            "answer_id": int(answer_id),
+            "message": request.form.get("message"),
+            "submission_time": data_manager.current_submission_time(),
+        }
+        data_manager.add_new_comment(new_comment_data)
+        question_id = data_manager.get_actual_question_by_answer_id(answer_id)[0]['question_id']
+        return redirect(url_for('route_question', question_id=question_id))
+
+    return render_template('comment.html', form_url=url_for('route_comment_to_answer', answer_id=answer_id))
 
 
 if __name__ == '__main__':

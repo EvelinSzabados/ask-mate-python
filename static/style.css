@@ -15,6 +15,7 @@ body{
     border-radius: 15px;
     border: 1px solid #cccccc;
     padding: 20px;
+    margin-bottom: 30px;
 }
 .search_icon{
     width: 40px;
@@ -75,6 +76,20 @@ h2{
     padding: 10px 10px 10px 20px;
     margin-top: 10px;
 }
+.comments{
+    background-color: white;
+    margin-left: 10%;
+}
+.comments .comment_header{
+    color: brown;
+    font-size: 12px;
+}
+
+.comments .comment_content{
+    font-size: 13px;
+    padding: 10px 10px 10px 20px;
+     border-left: 6px solid brown;
+}
 #container .answers img{
     padding-right:20px;
 }
@@ -130,42 +145,44 @@ method{
     padding:0px;
 }
 
-#container .button{
+.button{
   background-color: #eeeeee;
   border: none;
   color: cadetblue;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+    max-width: 200px;
   font-size: 16px;
   margin: 20px 5px 10px 5px;
   cursor: pointer;
 }
-#container .button:hover{
+.button:hover{
   background-color: #cccccc;
     color:white;
     transition: 1s;
 
 }
-#container .button_back{
-  background-color: azure;
+.button_back{
+    background-color: transparent;
   border: none;
   color: cadetblue;
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+    max-width: 200px;
+    float:right;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 20px 5px 10px 5px;
   cursor: pointer;
 }
-#container .button_back:hover{
-    background-color: darkgrey;
+.button_back:hover{
+  background-color: #cccccc;
     color:white;
-    transition: 0.5s;
+    transition: 1s;
 
 }
+
 #container .button_update{
     font-weight: bold;
     background-color: transparent;
@@ -173,9 +190,8 @@ method{
   padding: 15px 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  width: 100%;
+
   cursor: pointer;
 
 }
@@ -288,6 +304,30 @@ input[type=checkbox] {
 [id^=x-] a {
   float: right;
   }
+
+.expandable {
+
+
+  overflow: hidden;
+  color: #000;
+  line-height: 50px;
+
+  height: 0;
+ }
+
+ .expandable:target {
+    height: auto;
+     line-height: 2;
+    padding-top: 1em;
+    padding-bottom: 1em;
+     transition: 1s;
+
+}
+
+.close_span:target{
+    line-height: 0;
+    transition: none;
+}
 
   @keyframes modalopen {
     from {

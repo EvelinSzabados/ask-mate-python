@@ -50,8 +50,9 @@ def add_new_answer(cursor, new_data):
 @connection.connection_handler
 def add_new_comment(cursor, new_data):
     cursor.execute("INSERT INTO comment VALUES (DEFAULT, %(question_id)s,"
-                   "NULL,%(message)s,%(submission_time)s, NULL) RETURNING id;",
+                   "%(answer_id)s,%(message)s,%(submission_time)s, NULL) RETURNING id;",
                    {'question_id': new_data["question_id"],
+                    'answer_id': new_data["answer_id"],
                     'message': new_data["message"],
                     'submission_time': new_data["submission_time"]})
 
@@ -77,6 +78,14 @@ def get_actual_answer(cursor, id):
                    {'id': id})
     actual_answer = cursor.fetchall()
     return actual_answer
+
+
+@connection.connection_handler
+def get_answer_to_edit(cursor,id):
+    cursor.execute("SELECT message FROM answer WHERE id= %(id)s", {'id': id})
+    answer_to_edit = cursor.fetchall()
+
+    return answer_to_edit
 
 
 @connection.connection_handler
