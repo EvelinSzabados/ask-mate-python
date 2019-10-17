@@ -28,7 +28,7 @@
     </table>
         <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
        <a href="{{ url_for('route_comment_to_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button_comment" value="Comment to question"></a>
-        <a href="{{ url_for('route_edit_question', question_id=actual_question[0]["id"])}}"><input type="button" class="button" value="Edit Question"></a>
+        <a href="{{ url_for('route_edit_question', question_id=actual_question[0]["id"])}}"><input type="button" class="button_comment" value="Edit Question"></a>
     </div>
 <br>
     <div class = "comments" id="close">
@@ -37,7 +37,7 @@
         <div class = "comments" id="close">
         <div class="expandable" id="nav">
                 {% for data in actual_comment %}
-                     {%if data["answer_id"] == none %}
+                     {%if data["answer_id"] == none and data|length >0%}
                         <p class="comment_header">
                         {% for key, value in data.items() %}
                             {% if  key != "message" %}
@@ -45,20 +45,32 @@
                             {% endif %}
                         {% endfor %}
                          <p class="comment_content">{{ data["message"]}}</p>
-                         <a href="{{ url_for('route_delete_comment', comment_id=data["id"])}}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
+                         <a href="#x-{{ data["id"] }}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
 
-                        {% endif %}
 
+
+                    <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
+                        <h3 class="modalhead">Confirm</h3>
+                            <div class="modalp">
+                                <p>Are you sure you want to delete?</p>
+                                {% if data %}
+                                    <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_comment', comment_id=data["id"])}}">Yes</a>
+                                {% endif %}
+
+                            </div>
+                    </div>
+                    {% endif %}
                 {% endfor %}
-        <br>
-            <a href="#close"><span class="close_span"><h4>Hide comments</h4></span></a>
-             </div>
-        {% else %}
+                <br>
+                <a href="#close"><span class="close_span"><h4>Hide comments</h4></span></a>
+                </div>
+    {% else %}
             <h4>Comments for question</h4>
             <p><i>No comments posted yet!</i></p>
-      {% endif %}
-     </div>
+    {% endif %}
+        </div>
     <br>
+
      <h4>Answers</h4>
      <div class = "answers">
         {% if actual_answers|length >0 %}
@@ -87,27 +99,30 @@
                                 {% endif %}
                             {% endfor %}
                             <p class="comment_content_answer">{{ line["message"]}}</p>
-                            <a href="{{ url_for('route_delete_comment', comment_id=line["id"])}}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
+                            <a href="#x-{{ line["id"] }}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
 
+                         <div id="x-{{ line["id"] }}"><a href="#"><span class="exit">&times;</span></a>
+                            <h3 class="modalhead">Confirm</h3>
+                            <div class="modalp">
+                                <p>Are you sure you want to delete?</p>
+                                {% if data %}
+                                    <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_comment', comment_id=line["id"])}}">Yes</a>
+                                {% endif %}
+                            </div>
+                    </div>
                         {% endif %}
                 {% endfor %}
             {% else %}
                 <p><i>No comments posted yet!</i></p>
       {% endif %}
-                <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
-                        <h3 class="modalhead">Confirm</h3>
-                            <div class="modalp">
-                                <p>Are you sure you want to delete?</p>
-                                    <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_answer',answer_id=data["id"] )}}">Yes</a>
-                            </div>
-                    </div>
+
             {% endfor %}
         {% else %}
             <p><i>No answers posted yet!</i></p>
       {% endif %}
 
      </div>
-
+</div>
      <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post Answer"></a>
    <a href="{{ url_for('route_comment_to_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Comment to question"></a>
     <a href="#x-"><button class="button">Delete question</button></a>
@@ -123,6 +138,6 @@
 
           </div>
       </div>
-     </div>
+
 
 {% endblock %}

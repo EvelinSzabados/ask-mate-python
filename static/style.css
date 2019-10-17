@@ -297,7 +297,7 @@ footer{
  transform: translate(-50%,-50%);
   min-height:20%;
   max-height: 30%;
-  min-width: 30%;
+  min-width: 35%;
 
   }
 
@@ -323,8 +323,10 @@ input[type=checkbox] {
 }
 
 .modal_link{
-    padding:10px 30px;
-    margin: 10px 10px;
+    padding:10px;
+    max-height: 50px;
+    margin: 10px;
+    bottom: 20px;
     background-color: #eeeeee;
     color: #3B666B;
 }
@@ -429,7 +431,7 @@ input[type=checkbox] {
 	background: white;
 }
 fieldset {
-  overflow: hidden
+  overflow: hidden;
     float: left;
     clear: none;
     border:none;
