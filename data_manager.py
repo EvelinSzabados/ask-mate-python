@@ -10,8 +10,28 @@ def view_counter(cursor, id):
 
 
 @connection.connection_handler
-def get_questions_sql(cursor):
-    cursor.execute("SELECT * FROM question ORDER BY submission_time DESC;")
+def get_questions_sql(cursor, order):
+    if order == "submission_time":
+        cursor.execute("SELECT * FROM question ORDER BY submission_time DESC;")
+        all_questions = cursor.fetchall()
+    if order == "title":
+        cursor.execute("SELECT * FROM question ORDER BY title;")
+        all_questions = cursor.fetchall()
+    if order == "message":
+        cursor.execute("SELECT * FROM question ORDER BY message;")
+        all_questions = cursor.fetchall()
+    if order == "vote_number":
+        cursor.execute("SELECT * FROM question ORDER BY vote_number DESC;")
+        all_questions = cursor.fetchall()
+    if order == "view_number":
+        cursor.execute("SELECT * FROM question ORDER BY view_number DESC;")
+        all_questions = cursor.fetchall()
+
+    return all_questions
+
+@connection.connection_handler
+def get_questions_titled(cursor):
+    cursor.execute("SELECT * FROM question ORDER BY title;")
     all_questions = cursor.fetchall()
 
     return all_questions
