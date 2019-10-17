@@ -5,13 +5,14 @@ import csv
 from datetime import datetime
 app = Flask(__name__)
 
+
 @app.route('/')
 @app.route('/list')
 def route_list():
     limited_questions = data_manager.get_questions_limited()
     return render_template('list.html', limited_questions=limited_questions)
 
-@app.route('/list_all')
+
 @app.route('/list_all', methods=['GET', 'POST'])
 def route_all_list():
 
@@ -191,6 +192,6 @@ def route_delete_comment(comment_id):
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
-        port=7000,
+        port=5000,
         debug=True,
     )
