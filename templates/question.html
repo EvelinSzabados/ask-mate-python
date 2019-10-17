@@ -28,7 +28,7 @@
     </table>
         <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
        <a href="{{ url_for('route_comment_to_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button_comment" value="Comment to question"></a>
-        <a href="{{ url_for('route_edit_question', question_id=actual_question[0]["id"])}}"><input type="button" class="button" value="Edit Question"></a>
+        <a href="{{ url_for('route_edit_question', question_id=actual_question[0]["id"])}}"><input type="button" class="button_comment" value="Edit Question"></a>
     </div>
 <br>
     <div class = "comments" id="close">
