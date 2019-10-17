@@ -207,3 +207,17 @@ def search_answer(cursor,searched):
 @connection.connection_handler
 def edit_answer(cursor, new_message, id):
     cursor.execute("UPDATE answer SET message = %(new_message)s WHERE id=%(id)s", {'id': id, 'new_message': new_message})
+
+
+@connection.connection_handler
+def delete_comment(cursor, id):
+
+    cursor.execute("DELETE FROM comment WHERE id=%(id)s", {'id': id})
+
+
+@connection.connection_handler
+def get_question_id_by_comment_id(cursor, id):
+    cursor.execute("SELECT question_id FROM comment WHERE id= %(id)s", {'id': id})
+    question_id = cursor.fetchall()
+
+    return question_id

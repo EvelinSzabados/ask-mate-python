@@ -164,6 +164,14 @@ def route_comment_to_answer(answer_id):
     return render_template('comment.html', form_url=url_for('route_comment_to_answer', answer_id=answer_id))
 
 
+@app.route('/comments/<comment_id>/delete', methods=['GET', 'POST'])
+def route_delete_comment(comment_id):
+
+    question_id = data_manager.get_question_id_by_comment_id(comment_id)
+    data_manager.delete_comment(comment_id)
+    return redirect(url_for('route_question', question_id=question_id[0]["question_id"]))
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',

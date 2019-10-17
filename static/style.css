@@ -446,6 +446,10 @@ fieldset {
     transition: 1s;
     color: cadetblue;
 }
+.trash_bin{
+    margin-left: 20px;
+
+}
 
   @keyframes modalopen {
     from {
