@@ -30,8 +30,7 @@ def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
     actual_answers = data_manager.get_actual_answer(question_id)
     referrer = request.headers.get("Referer")
-    if referrer == "http://0.0.0.0:7000" or referrer == "http://0.0.0.0:7000/list_all" \
-            or referrer !="http://0.0.0.0:7000/question/{}".format(question_id):
+    if referrer == "http://0.0.0.0:7000" or referrer == "http://0.0.0.0:7000/list_all":
         data_manager.view_counter(question_id)
 
     actual_comment = data_manager.get_actual_comment(question_id)
