@@ -11,11 +11,17 @@ def route_list():
     limited_questions = data_manager.get_questions_limited()
     return render_template('list.html', limited_questions=limited_questions)
 
-
 @app.route('/list_all')
+@app.route('/list_all', methods=['GET', 'POST'])
 def route_all_list():
-    questions = data_manager.get_questions_sql()
+
+    if request.method == 'POST':
+        order = request.form["order"]
+        questions = data_manager.get_questions_sql(order)
+        return render_template('all_questions.html', questions=questions)
+    questions = data_manager.get_questions_titled()
     return render_template('all_questions.html', questions=questions)
+
 
 
 @app.route('/question/<question_id>')

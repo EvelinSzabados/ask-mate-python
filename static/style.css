@@ -404,7 +404,7 @@ input[type=checkbox] {
 
 /* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: cadetblue;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -434,7 +434,18 @@ fieldset {
     clear: none;
     border:none;
 }
-
+.select_order{
+    width: 100px;
+    background-color: #cccccc;
+    color:#404040;
+    text-decoration: none;
+    border:none;
+}
+.select_order:hover{
+    background-color: #eeeeee;
+    transition: 1s;
+    color: cadetblue;
+}
 
   @keyframes modalopen {
     from {
