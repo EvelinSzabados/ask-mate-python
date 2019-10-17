@@ -48,7 +48,6 @@
                          <a href="#x-{{ data["id"] }}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
 
 
-
                     <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                         <h3 class="modalhead">Confirm</h3>
                             <div class="modalp">
@@ -56,12 +55,11 @@
                                 {% if data %}
                                     <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_comment', comment_id=data["id"])}}">Yes</a>
                                 {% endif %}
-
                             </div>
                     </div>
                     {% endif %}
                 {% endfor %}
-                <br>
+
                 <a href="#close"><span class="close_span"><h4>Hide comments</h4></span></a>
                 </div>
     {% else %}
@@ -88,16 +86,17 @@
                  <a href="{{ url_for('route_edit_answer', answer_id=data["id"], question_id=actual_question[0]["id"])}}"><input type="button" class="button" value="Edit Answer"></a>
                 <a href="{{ url_for('route_comment_to_answer',answer_id=data["id"] )}}"><input type="button" class="button" value="Comment"></a>
 
-                <h4>Comments</h4>
+
                {% if actual_comment|length >0%}
                     {% for line in actual_comment: %}
-                        {%if line["answer_id"] == data["id"]%}
+                        {%if line["answer_id"] == data["id"] and line|length >0%}
                             <p class="comment_header_answers">
                             {% for key, value in data.items() %}
                                 {% if  key != "message" %}
                                     {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
                                 {% endif %}
                             {% endfor %}
+                            <h5>Comments</h5>
                             <p class="comment_content_answer">{{ line["message"]}}</p>
                             <a href="#x-{{ line["id"] }}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
 
