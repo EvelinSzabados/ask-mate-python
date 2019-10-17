@@ -164,6 +164,22 @@ def route_comment_to_answer(answer_id):
     return render_template('comment.html', form_url=url_for('route_comment_to_answer', answer_id=answer_id))
 
 
+@app.route('/question/<question_id>/edit', methods=['GET', 'POST'])
+def route_edit_question(question_id):
+    if request.method == 'POST':
+        new_title = request.form.get("title")
+        new_message = request.form.get("message")
+        data_manager.edit_question(question_id, new_title, new_message)
+
+        return redirect(url_for('route_question', question_id=question_id))
+
+    actual_question = data_manager.get_question_to_edit(question_id)
+    return render_template("edit_question.html",
+                           form_url=url_for('route_edit_question', question_id=question_id),
+                           actual_question=actual_question,
+                           redirect_url=url_for('route_question', question_id=question_id))
+
+
 @app.route('/comments/<comment_id>/delete', methods=['GET', 'POST'])
 def route_delete_comment(comment_id):
 

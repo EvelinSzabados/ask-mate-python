@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layout.html' %}
+{% block title %}
+    Edit Question
+{% endblock %}
+{% block content %}
+    <h1>Edit Question</h1>
+    <form action="{{form_url}}" method="post">
+        <p>
+            <label for="title">Title:</label><br>
+
+        <input type="text" name="title" id="title" size="200" value="{{actual_question[0]["title"]}}">
+
+        </p>
+        <p>
+            <label for="message"></label><br>
+        <input type="text" name="message" id="message" size="200" value="{{actual_question[0]["message"]}}">
+
+        </p>
+        <a href="/"><input type="button" class="button_back" value="Back to home"></a>
+        <a href="{{ redirect_url }}"><input type="button" class="button_back" value="< < Back"></a>
+        <input type="submit" class="button" value="Submit"></form>
+{% endblock %}

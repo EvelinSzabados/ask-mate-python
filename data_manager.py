@@ -107,6 +107,14 @@ def get_answer_to_edit(cursor,id):
 
     return answer_to_edit
 
+@connection.connection_handler
+def get_question_to_edit(cursor,id):
+    cursor.execute("SELECT title, message FROM question WHERE id= %(id)s", {'id': id})
+    question_to_edit = cursor.fetchall()
+    print(question_to_edit)
+
+    return question_to_edit
+
 
 @connection.connection_handler
 def get_answer_to_comment(cursor,id):
@@ -207,6 +215,12 @@ def search_answer(cursor,searched):
 @connection.connection_handler
 def edit_answer(cursor, new_message, id):
     cursor.execute("UPDATE answer SET message = %(new_message)s WHERE id=%(id)s", {'id': id, 'new_message': new_message})
+
+
+@connection.connection_handler
+def edit_question(cursor, id, new_title, new_message):
+    cursor.execute("UPDATE question SET title = %(new_title)s, message = %(new_message)s"
+                   "WHERE id=%(id)s", {'id': id, 'new_title': new_title, 'new_message': new_message})
 
 
 @connection.connection_handler
