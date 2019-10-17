@@ -7,7 +7,22 @@
     <h1 class="front-h1">Ask mate</h1>
     <h2>All questions</h2>
     <p style="font-size: small; color: gray; margin-left: 20px; "><i>Click on the question to display details</i></p>
+    <p style="color:#3B666B">Choose the order of listing questions:</p>
+    <fieldset>
 
+    <label class="container">
+    <input type="radio" name="order" value="Title"> Title
+     <span class="checkmark"></span></label><label class="container">
+    <input type="radio" name="order" value="Submission Time" checked="checked"> Submission Time
+     <span class="checkmark"></span></label><label class="container">
+    <input type="radio" name="order" value="Number of votes"> Number of votes
+     <span class="checkmark"></span></label><label class="container">
+    <input type="radio" name="order" value="Number of views"> Number of views
+     <span class="checkmark"></span></label><label class="container">
+    <input type="radio" name="order" value="Message"> Message
+        <span class="checkmark"></span></label>
+
+    </fieldset>
 {% for question in questions %}
     <p class="front-links"><a href="{{ url_for('route_question', question_id=question['id']) }}">{{ question['title'] }}</a></p>
 
