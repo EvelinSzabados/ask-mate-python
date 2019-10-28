@@ -312,7 +312,7 @@ input[type=checkbox] {
 .exit{
   text-decoration:none;
   font-size: 40px;
-  text-decoration-style: none;
+
   overflow:hidden;
   color:white;
   margin: 5px 20px;
@@ -435,20 +435,23 @@ input[type=checkbox] {
 	background: white;
 }
 fieldset {
-  overflow: hidden
+  overflow: hidden;
     float: left;
     clear: none;
     border:none;
 }
 .select_order{
     width: 100px;
-    background-color: #cccccc;
+    background-color: transparent;
     color:#404040;
     text-decoration: none;
     border:none;
+    margin-top: 10px;
+    border-bottom: 3px solid cadetblue;
+    padding: 5px;
 }
 .select_order:hover{
-    background-color: #eeeeee;
+    border-color: #404040;
     transition: 1s;
     color: cadetblue;
 }
@@ -459,11 +462,9 @@ fieldset {
 
   @keyframes modalopen {
     from {
-
       opacity: 0;
     }
     to {
-
       opacity: 1;
     }
   }

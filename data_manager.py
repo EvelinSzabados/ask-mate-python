@@ -3,6 +3,7 @@ import csv
 import time
 from datetime import datetime
 
+
 @connection.connection_handler
 def view_counter(cursor, id):
     cursor.execute("UPDATE question SET view_number = view_number + 1 WHERE id= %(id)s",
@@ -29,6 +30,7 @@ def get_questions_sql(cursor, order):
 
     return all_questions
 
+
 @connection.connection_handler
 def get_questions_titled(cursor):
     cursor.execute("SELECT * FROM question ORDER BY title;")
@@ -43,6 +45,7 @@ def get_questions_limited(cursor):
     limited_questions = cursor.fetchall()
 
     return limited_questions
+
 
 @connection.connection_handler
 def add_new_question(cursor, new_data):
@@ -66,6 +69,7 @@ def add_new_answer(cursor, new_data):
                     'question_id': new_data["question_id"],
                     'vote_number': new_data["vote_number"],
                     'message': new_data["message"]})
+
 
 @connection.connection_handler
 def add_new_comment(cursor, new_data):
@@ -107,6 +111,7 @@ def get_answer_to_edit(cursor,id):
 
     return answer_to_edit
 
+
 @connection.connection_handler
 def get_question_to_edit(cursor,id):
     cursor.execute("SELECT title, message FROM question WHERE id= %(id)s", {'id': id})
@@ -130,6 +135,7 @@ def get_actual_comment(cursor, id):
                    {'id': id})
     actual_comment = cursor.fetchall()
     return actual_comment
+
 
 @connection.connection_handler
 def get_actual_comment(cursor, id):
@@ -173,6 +179,8 @@ def question_vote(cursor, vote, id):
     else:
         cursor.execute("UPDATE question SET vote_number = vote_number - 1 WHERE id=%(id)s",
                         {'id': id})
+
+
 @connection.connection_handler
 def answer_vote(cursor, vote, id):
     if vote == "up":
@@ -181,6 +189,7 @@ def answer_vote(cursor, vote, id):
     else:
         cursor.execute("UPDATE answer SET vote_number = vote_number - 1 WHERE id=%(id)s",
                         {'id': id})
+
 
 @connection.connection_handler
 def search_question(cursor,searched):
@@ -191,6 +200,7 @@ def search_question(cursor,searched):
     print(search_results)
 
     return search_results
+
 
 @connection.connection_handler
 def search_answer(cursor,searched):
@@ -211,6 +221,7 @@ def search_answer(cursor,searched):
 
     question_from_answer = get_question_by_answer(cursor)
     return question_from_answer
+
 
 @connection.connection_handler
 def edit_answer(cursor, new_message, id):

@@ -24,7 +24,6 @@ def route_all_list():
     return render_template('all_questions.html', questions=questions)
 
 
-
 @app.route('/question/<question_id>')
 def route_question(question_id):
     actual_question = data_manager.get_actual_question(question_id)
