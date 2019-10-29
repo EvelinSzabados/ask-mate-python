@@ -8,7 +8,22 @@
 </head>
 <body>
 <div class="container">
-    {{ message }}
+    {% if message == 'true' %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+              Successful registration!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+
+    {% else %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              This username is already taken!
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+   {% endif %}
     <form action="/register", method="post">
         <div class="form-group">
         <label for="username">Username</label>

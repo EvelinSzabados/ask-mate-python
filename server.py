@@ -198,9 +198,9 @@ def register():
 
         for user in existing_user_names:
             if user['username'] == username:
-                return render_template('register.html', message="This username is already taken!")
+                return render_template('register.html', message="false")
             else:
-                message = "Successful registration!"
+                message = "true"
         hashed_bytes = bcrypt.hashpw(request.form.get('password').encode('utf-8'), bcrypt.gensalt())
         register_data = {
             'username': username,
