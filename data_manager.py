@@ -265,3 +265,12 @@ def check_username(cursor):
     )
     existing_users = cursor.fetchall()
     return existing_users
+
+
+@connection.connection_handler
+def list_users(cursor):
+    cursor.execute(
+        "SELECT id, username, register_date FROM users"
+    )
+    list_of_users = cursor.fetchall()
+    return list_of_users

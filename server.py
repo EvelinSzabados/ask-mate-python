@@ -214,6 +214,15 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/users_list', methods=['GET', 'POST'])
+def listing_users():
+    if request.method == 'POST':
+        existing_users = data_manager.list_users()
+        return render_template('users_list.html', existing_users=existing_users)
+    existing_users = data_manager.list_users()
+    return render_template('users_list.html', existing_users=existing_users)
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',

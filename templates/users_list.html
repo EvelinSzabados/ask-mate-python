@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block title %}
+    List of Users
+{% endblock %}
+
+{% block content %}
+    <h1 class="front-h1">Ask mate</h1>
+    <h2>Users</h2>
+    <table>
+        <tr>
+            {% for key in existing_users[0].keys() %}
+                <th>{{key}}</th>
+            {%endfor%}
+        </tr>
+        {% for data in existing_users %}
+            <tr>
+                {% for key, value in data.items()%}
+                    <td>{{value}}</td>
+                {%endfor%}
+            </tr>
+        {%endfor%}
+    </table>
+    <a href="/list"><input type="button" class="button_back" value="< < Back"></a>
+
+{% endblock %}
