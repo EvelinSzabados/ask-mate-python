@@ -96,7 +96,7 @@ def get_actual_question(cursor, id):
     return actual_question
 
 
-@connection.connection_handlerquestion_id
+@connection.connection_handler
 def get_actual_answer(cursor, id):
     cursor.execute("SELECT * FROM answer WHERE question_id=%(id)s ORDER BY id;",
                    {'id': id})
