@@ -193,9 +193,11 @@ def route_delete_comment(comment_id):
 def register():
 
     if request.method == 'POST':
+        username = request.form.get('username')
+        existing_user_names = data_manager.check_username()
         hashed_bytes = bcrypt.hashpw(request.form.get('password').encode('utf-8'), bcrypt.gensalt())
         register_data = {
-            'username': request.form.get('username'),
+            'username': username,
             'register_date': data_manager.current_submission_time(),
             'password': str(hashed_bytes.decode('utf-8'))
         }
