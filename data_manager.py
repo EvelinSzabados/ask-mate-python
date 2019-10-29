@@ -96,7 +96,7 @@ def get_actual_question(cursor, id):
     return actual_question
 
 
-@connection.connection_handler
+@connection.connection_handlerquestion_id
 def get_actual_answer(cursor, id):
     cursor.execute("SELECT * FROM answer WHERE question_id=%(id)s ORDER BY id;",
                    {'id': id})
@@ -244,3 +244,14 @@ def get_question_id_by_comment_id(cursor, id):
     question_id = cursor.fetchall()
 
     return question_id
+
+@connection.connection_handler
+def create_user(cursor, new_data):
+    cursor.execute(
+        "INSERT INTO users VALUES (DEFAULT, %(register_date)s,"
+        "%(username)s, %(password)s) RETURNING id;",
+        {'register_date': new_data["register_date"],
+         'username': new_data["username"],
+         'password': new_data["password"]})
+    user_id = cursor.fetchall()
+    return user_id
