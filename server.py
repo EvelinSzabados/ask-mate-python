@@ -195,14 +195,21 @@ def register():
     if request.method == 'POST':
         username = request.form.get('username')
         existing_user_names = data_manager.check_username()
+
+        for user in existing_user_names:
+            if user['username'] == username:
+                return render_template('register.html', message="This username is already taken!")
+            else:
+                message = "Successful registration!"
         hashed_bytes = bcrypt.hashpw(request.form.get('password').encode('utf-8'), bcrypt.gensalt())
         register_data = {
             'username': username,
             'register_date': data_manager.current_submission_time(),
             'password': str(hashed_bytes.decode('utf-8'))
         }
+
         data_manager.create_user(register_data)
-        return redirect(url_for('/route_list'))
+        return render_template('register.html', message=message)
 
     return render_template('register.html')
 
