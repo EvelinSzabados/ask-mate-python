@@ -197,7 +197,6 @@ def search_question(cursor,searched):
                    "or LOWER(message) like %(searched)s",
                    {'searched': '%{}%'.format(searched)})
     search_results = cursor.fetchall()
-    print(search_results)
 
     return search_results
 
@@ -216,7 +215,6 @@ def search_answer(cursor,searched):
                        {'question_id': line['question_id']})
             question_by_answer = cursor.fetchone()
             new_list.append(question_by_answer)
-        print(new_list)
         return new_list
 
     question_from_answer = get_question_by_answer(cursor)
