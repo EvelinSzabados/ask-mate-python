@@ -256,3 +256,12 @@ def create_user(cursor, new_data):
          'password': new_data["password"]})
     user_id = cursor.fetchall()
     return user_id
+
+
+@connection.connection_handler
+def check_username(cursor):
+    cursor.execute(
+        "SELECT username FROM users"
+    )
+    existing_users = cursor.fetchall()
+    return existing_users
