@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import connection
 import data_manager
+import bcrypt
 import csv
 from datetime import datetime
 app = Flask(__name__)
@@ -63,6 +64,7 @@ def route_new_question():
                 "message": request.form.get("message"),
                 "image": ""
             }
+
         question_id = data_manager.add_new_question(new_question_data)
         return redirect(url_for('route_question', question_id=question_id[0]["id"]))
 
@@ -187,8 +189,19 @@ def route_delete_comment(comment_id):
     return redirect(url_for('route_question', question_id=question_id[0]["question_id"]))
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+
+    if request.method == 'POST':
+        hashed_bytes = bcrypt.hashpw(request.form.get('password').encode('utf-8'), bcrypt.gensalt())
+        register_data = {
+            'username': request.form.get('username'),
+            'register_date': data_manager.current_submission_time(),
+            'password': str(hashed_bytes.decode('utf-8'))
+        }
+        data_manager.create_user(register_data)
+        return redirect(url_for('/'))
+
     return render_template('register.html')
 
 
