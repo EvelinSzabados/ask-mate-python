@@ -1,0 +1,23 @@
+html,body{
+    margin:0;
+    padding:0;
+    background-color: cadetblue;
+}
+
+.container{
+    margin-top: 200px;
+    max-width: 30%;
+    background-color: white;
+    padding: 30px;
+}
+
+.btn-primary{
+    background-color: cadetblue;
+    border:none;
+    margin: 20px 0px 0px 0px;
+    padding: 10px 15px 10px 15px;
+}
+
+.btn-primary:hover{
+    background-color: #11557C;
+}

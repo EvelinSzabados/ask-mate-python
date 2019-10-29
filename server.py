@@ -187,6 +187,11 @@ def route_delete_comment(comment_id):
     return redirect(url_for('route_question', question_id=question_id[0]["question_id"]))
 
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
