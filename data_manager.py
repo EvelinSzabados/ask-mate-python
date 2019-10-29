@@ -245,6 +245,7 @@ def get_question_id_by_comment_id(cursor, id):
 
     return question_id
 
+
 @connection.connection_handler
 def create_user(cursor, new_data):
     cursor.execute(

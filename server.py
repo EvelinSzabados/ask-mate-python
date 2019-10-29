@@ -200,7 +200,7 @@ def register():
             'password': str(hashed_bytes.decode('utf-8'))
         }
         data_manager.create_user(register_data)
-        return redirect(url_for('/'))
+        return redirect(url_for('/route_list'))
 
     return render_template('register.html')
 
