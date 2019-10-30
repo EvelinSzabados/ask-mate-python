@@ -34,7 +34,7 @@ html,body{
     font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
     font-weight: bold;
     color: #c09853;
-    margin: 10px 10px 10px 30px;
+    margin: 20px 10px 10px 30px;
     text-transform: capitalize;
 }
 .search_box{
@@ -50,7 +50,9 @@ html,body{
 .front-h1{
     float:right;
     clear:right;
-    margin: 10px;
+    margin: 15px;
+    text-transform: uppercase;
+    color: #c09853;
 }
 h2{
     color: cadetblue;
