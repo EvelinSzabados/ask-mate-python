@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="container">
+
     {% if message == 'true' %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
               Successful registration!
@@ -23,6 +24,8 @@
                 <span aria-hidden="true">&times;</span>
               </button>
         </div>
+    {% else %}
+            <p></p>
    {% endif %}
     <form action="/register", method="post">
         <div class="form-group">

@@ -265,3 +265,10 @@ def check_username(cursor):
     )
     existing_users = cursor.fetchall()
     return existing_users
+
+
+@connection.connection_handler
+def login(cursor):
+    cursor.execute("SELECT username, password FROM users")
+    login_attempt = cursor.fetchall()
+    return login_attempt
