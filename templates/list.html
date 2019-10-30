@@ -1,13 +1,28 @@
-
 {% extends 'layout.html' %}
 {% block title %}
     Questions
 {% endblock %}
 
 {% block content %}
+    <div class="alert alert-block">
+        {% if is_match == True %}
+            <div class="alert alert-success">
+              <a class="close" data-dismiss="alert">×</a>
+              Successful login!
+            </div>
+
+        {% elif is_match == False %}
+            <div class="alert alert-error">
+              <a class="close" data-dismiss="alert">×</a>
+              Wrong username or password!
+            </div>
+
+        {% else %}
+                <p></p>
+   {% endif %}
+    </div>
     <h1 class="front-h1">Ask mate</h1>
     <a href="/users_list"><button type="button" class="button">List of Users</button></a>
-    {{ is_match }}
     <h2>Latest 5 questions</h2>
     <p style="font-size: small; color: gray; margin-left: 20px; "><i>Click on the question to display details</i></p>
 

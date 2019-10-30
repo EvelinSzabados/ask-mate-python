@@ -216,20 +216,21 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    limited_questions = data_manager.get_questions_limited()
     if request.method == 'POST':
 
         login_username = request.form.get('username')
         login_password = request.form.get('password')
         existing_data = data_manager.login()
         for user in existing_data:
-            if user['username'] == login_username:
-                hash_to_check = user['password']
+            hash_to_check = user['password']
+            hashed_bytes_password = hash_to_check.encode('utf-8')
+            is_match = bcrypt.checkpw(login_password.encode('utf-8'), hashed_bytes_password)
+            if user['username'] == login_username and is_match is True:
+                return render_template('list.html', is_match=is_match, limited_questions=limited_questions)
 
-        hashed_bytes_password = hash_to_check.encode('utf-8')
-        is_match = bcrypt.checkpw(login_password.encode('utf-8'), hashed_bytes_password)
-
-        return render_template('list.html', is_match=is_match)
-    return render_template('list.html')
+        return render_template('list.html', is_match=False, limited_questions=limited_questions)
+    return render_template('list.html', is_match="none", limited_questions=limited_questions)
 
 
 @app.route('/users_list', methods=['GET', 'POST'])
