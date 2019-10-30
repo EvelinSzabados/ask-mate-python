@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.css') }}">
 </head>
 <body>
-{{ session['username'] }}
-<a href="{{ url_for('index')}}"><button class="button">Log out</button></a>
+<div class="user_bar">
+    <span class="user_bar_user"><small>Logged in user:</small> {{ session['username'] }}</span>
+<a href="{{ url_for('index')}}"><button class="button_user_bar">Log out</button></a>
+    <h1 class="front-h1">Ask mate</h1>
+    <div class="clear"></div>
+</div>
 <div class="container-box">
     <div id="container">
         <div class="search-container">

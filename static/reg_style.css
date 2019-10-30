@@ -1,14 +1,46 @@
-html,body{
+body{
     margin:0;
     padding:0;
-    background-color: #cccccc;
+    background-attachment: fixed;
+    background: rgb(0,164,147);
+    background-repeat: no-repeat;
+    background: -moz-radial-gradient(circle, rgba(0,164,147,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(0,164,147,1) 0%, rgba(0,0,0,1) 100%);
+    background: radial-gradient(circle, rgba(0,164,147,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00a493",endColorstr="#000000",GradientType=1);
 }
-
+html{
+ height: 100%;
+}
+.container-box{
+    margin: 15vh auto;
+}
 .container{
-    margin-top: 200px;
+
     max-width: 30%;
     background-color: white;
     padding: 30px;
+}
+.main_header{
+    background-color: transparent;
+    margin: 50px auto;
+    width: 30%;
+    text-align: center;
+}
+.main_header h1{
+    font-family: 'Anton', sans-serif;
+    color: white;
+    font-size: 60px;
+}
+.main_header p{
+    font-family: 'Poppins', sans-serif;
+    color:#c09853;
+    font-size: 30px;
+    background-color: rgb(0,0,0,0.5);
+}
+.main_header span{
+    color:#eeeeee;
+    font-size: 18px;
 }
 
 .btn-primary{

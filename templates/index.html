@@ -5,8 +5,15 @@
     <title>Register</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='reg_style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Poppins|Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="container-box">
+    <div class="main_header">
+        <h1>Ask Mate</h1>
+        <p>The place to get the right answers</p>
+        <span class="info">Please log in</span>
+    </div>
 <div class="container">
 
     {% if is_match == False %}
@@ -32,7 +39,7 @@
         <button type="submit" class="btn btn-primary">Log in</button> <a href="/register"><button type="button" class="btn btn-primary">Register</button></a>
 </form>
 </div>
-
+</div>
 
 
 
