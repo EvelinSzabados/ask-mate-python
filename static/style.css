@@ -417,10 +417,9 @@ input[type=checkbox] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
-    float:left;
+
 
 }
-
 /* Create a custom radio button */
 .checkmark {
   position: absolute;
@@ -466,9 +465,18 @@ input[type=checkbox] {
 }
 fieldset {
   overflow: hidden;
-    float: left;
+
     clear: none;
     border:none;
+}
+
+select{
+    background-color: white;
+    border: 1px solid #ccc;
+    color: #404040;
+    padding: 5px;
+    font-size: 14px;
+    margin: 5px 10px;
 }
 .select_order{
     width: 100px;
@@ -476,14 +484,13 @@ fieldset {
     color:#404040;
     text-decoration: none;
     border:none;
-    margin-top: 10px;
-    border-bottom: 3px solid cadetblue;
-    padding: 5px;
+    padding: 15px;
 }
 .select_order:hover{
-    border-color: #404040;
+
     transition: 1s;
-    color: cadetblue;
+    color: white;
+    background-color: cadetblue;
 }
 .trash_bin{
     margin-left: 20px;

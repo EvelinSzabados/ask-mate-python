@@ -11,20 +11,22 @@
 
     <form name="order" action="/list_all" method="post">
         <fieldset>
-    <label class="container">
-        <input type="radio" name="order" value="title"> Title
-         <span class="checkmark"></span></label><label class="container">
-        <input type="radio" name="order" value="submission_time"> Submission Time
-         <span class="checkmark"></span></label><label class="container">
-        <input type="radio" name="order" value="vote_number"> Number of votes
-         <span class="checkmark"></span></label><label class="container">
-        <input type="radio" name="order" value="view_number"> Number of views
-         <span class="checkmark"></span></label><label class="container">
-        <input type="radio" name="order" value="message"> Message
-            <span class="checkmark"></span></label>
-
+            <label class="container">
+            <input type="radio" name="order" value="title"> Title
+             <span class="checkmark"></span></label><label class="container">
+            <input type="radio" checked="checked" name="order" value="submission_time"> Submission Time
+             <span class="checkmark"></span></label><label class="container">
+            <input type="radio" name="order" value="vote_number"> Number of votes
+             <span class="checkmark"></span></label><label class="container">
+            <input type="radio" name="order" value="view_number"> Number of views
+             <span class="checkmark"></span></label><label class="container">
+            <input type="radio" name="order" value="message"> Message
+                <span class="checkmark"></span></label>
         </fieldset>
-     <input type="submit" class ="select_order" value="Select Order">
+        <select>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select><input type="submit" class ="select_order"  value="Select Order">
     </form>
     <br>
 
