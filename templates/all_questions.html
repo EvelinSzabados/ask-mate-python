@@ -4,12 +4,13 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="front-h1">Ask mate</h1>
     <h2>All questions</h2>
     <p style="font-size: small; color: gray; margin-left: 20px; "><i>Click on the question to display details</i></p>
+
     <p style="color:#3B666B">Choose the order of listing questions:</p>
 
     <form name="order" action="/list_all" method="post">
+    <div class="order_container">
         <fieldset>
             <label class="container">
             <input type="radio" name="order" value="title"> Title
@@ -22,12 +23,14 @@
              <span class="checkmark"></span></label><label class="container">
             <input type="radio" name="order" value="message"> Message
                 <span class="checkmark"></span></label>
+            </div>
         </fieldset>
         <select>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select><input type="submit" class ="select_order"  value="Select Order">
     </form>
+
     <br>
 
 {% for question in questions %}

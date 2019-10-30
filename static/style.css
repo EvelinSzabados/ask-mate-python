@@ -427,7 +427,7 @@ input[type=checkbox] {
   left: 0;
   height: 15px;
   width: 15px;
-  background-color: #eee;
+  background-color: #808080;
   border-radius: 50%;
 
 }
@@ -465,11 +465,13 @@ input[type=checkbox] {
 }
 fieldset {
   overflow: hidden;
-
     clear: none;
     border:none;
 }
-
+.order_container{
+    background-color: #efefef;
+    padding: 10px;
+}
 select{
     background-color: white;
     border: 1px solid #ccc;
