@@ -1,13 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session, escape
 import connection
 import data_manager
 import bcrypt
 import csv
 from datetime import datetime
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/list')
 def route_list():
     limited_questions = data_manager.get_questions_limited()
@@ -227,10 +232,18 @@ def login():
             hashed_bytes_password = hash_to_check.encode('utf-8')
             is_match = bcrypt.checkpw(login_password.encode('utf-8'), hashed_bytes_password)
             if user['username'] == login_username and is_match is True:
-                return render_template('list.html', is_match=is_match, limited_questions=limited_questions)
+                session['username'] = login_username
+                return redirect(url_for('route_list', is_match=is_match))
 
-        return render_template('list.html', is_match=False, limited_questions=limited_questions)
-    return render_template('list.html', is_match="none", limited_questions=limited_questions)
+        return render_template('index.html', is_match=False)
+    return render_template('index.html', is_match="none")
+
+
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
 
 
 @app.route('/users_list', methods=['GET', 'POST'])

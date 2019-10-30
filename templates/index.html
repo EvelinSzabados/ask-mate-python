@@ -9,17 +9,9 @@
 <body>
 <div class="container">
 
-    {% if message == 'true' %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-              Successful registration!
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-        </div>
-
-    {% elif message == 'false' %}
+    {% if is_match == False %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              This username is already taken!
+              Wrong username or password!
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -27,9 +19,7 @@
     {% else %}
             <p></p>
    {% endif %}
-
-    <form action="/register", method="post">
-        <h1>Registration</h1>
+    <form action="/login", method="post">
         <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required minlength="5" autocomplete="off">
@@ -39,7 +29,7 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required minlength="5" autocomplete="off">
       </div>
-        <button type="submit" class="btn btn-primary">Register</button> <a href="/"><button type="button" class="btn btn-primary">Back to main page</button></a>
+        <button type="submit" class="btn btn-primary">Log in</button> <a href="/register"><button type="button" class="btn btn-primary">Register</button></a>
 </form>
 </div>
 

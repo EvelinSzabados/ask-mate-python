@@ -8,18 +8,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.css') }}">
 </head>
 <body>
-
-<div class="login">
-    <form class="form-inline" action="/login" method="post">
-        <input type="username" id="username" placeholder="Enter username" name="username" autocomplete="off">
-        <input type="password" id="password" placeholder="Enter password" name="password" autocomplete="off">
-        <button type="submit">Login</button>
-        <a href="/register"><button type="button">Register</button></a>
-    </form>
-</div>
-<div class="clear"></div>
+{{ session['username'] }}
+<a href="{{ url_for('index')}}"><button class="button">Log out</button></a>
 <div class="container-box">
-
     <div id="container">
         <div class="search-container">
             <form action="/search" method="get">
