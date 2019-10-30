@@ -205,18 +205,36 @@ def register():
         register_data = {
             'username': username,
             'register_date': data_manager.current_submission_time(),
-            'password': str(hashed_bytes.decode('utf-8'))
+            'password': hashed_bytes.decode('utf-8')
         }
 
         data_manager.create_user(register_data)
         return render_template('register.html', message=message)
 
-    return render_template('register.html')
+    return render_template('register.html', message="none")
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+
+        login_username = request.form.get('username')
+        login_password = request.form.get('password')
+        existing_data = data_manager.login()
+        for user in existing_data:
+            if user['username'] == login_username:
+                hash_to_check = user['password']
+
+        hashed_bytes_password = hash_to_check.encode('utf-8')
+        is_match = bcrypt.hashpw(login_password, hashed_bytes_password)
+
+        return render_template('list.html', is_match=is_match)
+    return render_template('list.html')
 
 
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
-        port=5000,
+        port=6000,
         debug=True,
     )
