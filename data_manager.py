@@ -274,3 +274,10 @@ def list_users(cursor):
     )
     list_of_users = cursor.fetchall()
     return list_of_users
+
+
+@connection.connection_handler
+def login(cursor):
+    cursor.execute("SELECT username, password FROM users")
+    login_attempt = cursor.fetchall()
+    return login_attempt

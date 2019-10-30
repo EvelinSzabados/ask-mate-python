@@ -226,7 +226,7 @@ def login():
                 hash_to_check = user['password']
 
         hashed_bytes_password = hash_to_check.encode('utf-8')
-        is_match = bcrypt.hashpw(login_password, hashed_bytes_password)
+        is_match = bcrypt.checkpw(login_password.encode('utf-8'), hashed_bytes_password)
 
         return render_template('list.html', is_match=is_match)
     return render_template('list.html')
