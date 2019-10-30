@@ -20,18 +20,16 @@
 <div class="clear"></div>
 <div class="container-box">
 
-<div id="container">
-<div class="search-container">
-    <form action="/search" method="get">
-      <input class="search_box" type="text" name="searched_word" placeholder="Search" required autocomplete="off"><a href="/search"><input type="image" value="Search" alt="submit" class="search_icon" src="{{ url_for('static', filename="search-solid.svg" )}}"></a>
+    <div id="container">
+        <div class="search-container">
+            <form action="/search" method="get">
+              <input class="search_box" type="text" name="searched_word" placeholder="Search" required autocomplete="off"><a href="/search"><input type="image" value="Search" alt="submit" class="search_icon" src="{{ url_for('static', filename="search-solid.svg" )}}"></a>
 
-    </form>
+            </form>
+            </div>
+        {% block content %}
+        {% endblock %}
     </div>
-{% block content %}
-{% endblock %}
-
-</div>
-
 </div>
 
 
