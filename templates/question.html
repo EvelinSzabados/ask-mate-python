@@ -5,60 +5,72 @@
 
 {% block content %}
     <div class="table-container">
-    <!-- Displaying the current question's details in table-->
-    <table>
-        <caption><h4>Question Details</h4></caption>
+        <!-- Displaying the current question's details in table-->
+        <table>
+            <caption><h4>Question Details</h4></caption>
             <tr>
                 {% for key in actual_question[0].keys() %}
-                    {%if key != "image" %}
+                    {% if key != "image" %}
                         <th> {{ key }} </th>
                     {% endif %}
                 {% endfor %}
             </tr>
-        {% for data in actual_question %}
-            <tr>
-                {% for key, value in data.items() %}
-                    {%if key != "image" %}
-                        <td> {{ value }} </td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
+            {% for data in actual_question %}
+                <tr>
+                    {% for key, value in data.items() %}
+                        {% if key != "image" %}
+                            <td> {{ value }} </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
 
-        {% endfor %}
-    </table>
-    <!-- End of question table-->
-    <!-- Buttons for question : vote, comment, edit-->
-        <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a> <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" )}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
-        <a href="{{ url_for('route_comment_to_question',question_id=actual_question[0]["id"] )}}"><input type="button" class="button_comment" value="Comment to question"></a>
-        <a href="{{ url_for('route_edit_question', question_id=actual_question[0]["id"])}}"><input type="button" class="button_comment" value="Edit Question"></a>
+            {% endfor %}
+        </table>
+        <!-- End of question table-->
+        <!-- Buttons for question : vote, comment, edit-->
+        <a href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="up" ) }}"><img
+                src="{{ url_for('static', filename="thumbs-up-regular.svg" ) }}" alt="Thumbs up" width="15px"></a> <a
+            href="{{ url_for('route_question_vote',question_id=actual_question[0]["id"],question_vote="down" ) }}"><img
+            src="{{ url_for('static', filename="thumbs-down-regular.svg" ) }}" alt="Thumbs down" width="15px"></a>
+        <a href="{{ url_for('route_comment_to_question',question_id=actual_question[0]["id"] ) }}"><input type="button"
+                                                                                                          class="button_comment"
+                                                                                                          value="Comment to question"></a>
+        <a href="{{ url_for('route_edit_question', question_id=actual_question[0]["id"]) }}"><input type="button"
+                                                                                                    class="button_comment"
+                                                                                                    value="Edit Question"></a>
     </div>
     <!-- End of question section-->
-<br>
+    <br>
     <!-- Start of question_comments section-->
-    <div class = "comments" id="close">
+    <div class="comments" id="close">
         {% if actual_comment|length >0 %}
             <!-- Start of expandable comment section-->
             <a href="#nav"><span><h4>Show comments</h4></span></a>
             <div class="expandable" id="nav">
                 {% for data in actual_comment %}
-                    {%if data["answer_id"] == none %}
+                    {% if data["answer_id"] == none %}
                         <p class="comment_header">
                             {% for key, value in data.items() %}
                                 {% if  key != "message" %}
-                                    {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
+                                    {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}
+                                    <span style='font-size:20px; color: #666666'>&#9676;</span>
                                 {% endif %}
                             {% endfor %}
-                        <p class="comment_content">{{ data["message"]}}</p>
-                        <a href="{{ url_for('route_delete_comment', comment_id=data["id"])}}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
+                        <p class="comment_content">{{ data["message"] }}</p>
+                        <a href="{{ url_for('route_delete_comment', comment_id=data["id"]) }}"><img class="trash_bin"
+                                                                                                    src="{{ url_for('static', filename="trash.svg" ) }}"
+                                                                                                    alt="Delete comment"
+                                                                                                    width="15px"></a>
                     {% endif %}
                     <!-- Start of pop-up modal for deleting question-->
                     <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                         <h3 class="modalhead">Confirm</h3>
                         <div class="modalp">
                             <p>Are you sure you want to delete?</p>
-                                {% if data %}
-                                    <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_comment', comment_id=data["id"])}}">Yes</a>
-                                {% endif %}
+                            {% if data %}
+                                <a class="modal_link" href="#">No</a><a class="modal_link"
+                                                                        href="{{ url_for('route_delete_comment', comment_id=data["id"]) }}">Yes</a>
+                            {% endif %}
                         </div>
                     </div>
                     <!-- End of pop-up modal-->
@@ -70,70 +82,90 @@
             <h4>Comments for question</h4>
             <p><i>No comments posted yet!</i></p>
         {% endif %}
-     </div>
+    </div>
     <!-- End of question comments section-->
     <br>
     <!-- Start of answers section-->
-     <h4>Answers</h4>
-     <div class = "answers">
+    <h4>Answers</h4>
+    <div class="answers">
         {% if actual_answers|length >0 %}
             {% for data in actual_answers %}
                 <p class="answer_header">
-                {% for key, value in data.items() %}
-                    {% if  key != "message" %}
-                        {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span> <!-- Displaying header for answer(f.e : submission time)-->
-                    {% endif %}
-                {% endfor %}
-                <p class="answer_content">{{ data["message"]}}</p><!-- Answer's content-->
-<!-- Buttons for answer: vote, delete, edit, comment-->
-                <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="up",answer_id = actual_answers[loop.index0]["id"] )}}"><img src="{{ url_for('static', filename="thumbs-up-regular.svg" )}}" alt="Thumbs up" width="15px"></a><a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="down",answer_id = actual_answers[loop.index0]["id"])}}"><img src="{{ url_for('static', filename="thumbs-down-regular.svg" )}}" alt="Thumbs down" width="15px"></a>
-                <a href="#x-{{ data["id"] }}"><button class="button">Delete answer</button></a>
-                <a href="{{ url_for('route_edit_answer', answer_id=data["id"], question_id=actual_question[0]["id"])}}"><input type="button" class="button" value="Edit Answer"></a>
-                <a href="{{ url_for('route_comment_to_answer',answer_id=data["id"] )}}"><input type="button" class="button" value="Comment"></a>
-<!-- Start of answer_comments section-->
-                {% if actual_comment|length >0%}
+                    {% for key, value in data.items() %}
+                        {% if  key != "message" %}
+                            {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}
+                            <span style='font-size:20px; color: #666666'>&#9676;</span>
+                            <!-- Displaying header for answer(f.e : submission time)-->
+                        {% endif %}
+                    {% endfor %}
+                <p class="answer_content">{{ data["message"] }}</p><!-- Answer's content-->
+                <!-- Buttons for answer: vote, delete, edit, comment-->
+                <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="up",answer_id = actual_answers[loop.index0]["id"] ) }}"><img
+                        src="{{ url_for('static', filename="thumbs-up-regular.svg" ) }}" alt="Thumbs up"
+                        width="15px"></a>
+                <a href="{{ url_for('route_answer_vote',question_id=actual_question[0]["id"],answer_vote="down",answer_id = actual_answers[loop.index0]["id"]) }}"><img
+                        src="{{ url_for('static', filename="thumbs-down-regular.svg" ) }}" alt="Thumbs down"
+                        width="15px"></a>
+                <a href="#x-{{ data["id"] }}">
+                    <button class="button">Delete answer</button>
+                </a>
+                <a href="{{ url_for('route_edit_answer', answer_id=data["id"], question_id=actual_question[0]["id"]) }}"><input
+                        type="button" class="button" value="Edit Answer"></a>
+                <a href="{{ url_for('route_comment_to_answer',answer_id=data["id"] ) }}"><input type="button"
+                                                                                                class="button"
+                                                                                                value="Comment"></a>
+                <!-- Start of answer_comments section-->
+                {% if actual_comment|length >0 %}
                     {% for line in actual_comment %}
-                        {%if line["answer_id"] == data["id"] and line|length >0%}
+                        {% if line["answer_id"] == data["id"] and line|length >0 %}
                             <p class="comment_header_answers">
-                            {% for key, value in data.items() %}
-                                {% if  key != "message" %}
-                                    {{ "%s"|format(key) + ": " + "%s"|format(value) + "  " }}<span style='font-size:20px; color: #666666'>&#9676;</span>
-                                {% endif %}
-                            {% endfor %}
+                                {% for key, value in data.items() %}
+                                    {% if  key != "message" %}
+                                        {{ "%s" | format(key) + ": " + "%s"|format(value) + "  " }}
+                                        <span style='font-size:20px; color: #666666'>&#9676;</span>
+                                    {% endif %}
+                                {% endfor %}
                             <h5>Comments</h5>
-                            <p class="comment_content_answer">{{ line["message"]}}</p>
-                            <a href="{{ url_for('route_delete_comment', comment_id=line["id"])}}"><img class="trash_bin" src="{{ url_for('static', filename="trash.svg" )}}" alt="Delete comment" width="15px"></a>
+                            <p class="comment_content_answer">{{ line["message"] }}</p>
+                            <a href="{{ url_for('route_delete_comment', comment_id=line["id"]) }}"><img
+                                    class="trash_bin" src="{{ url_for('static', filename="trash.svg" ) }}"
+                                    alt="Delete comment" width="15px"></a>
                         {% endif %}
                     {% endfor %}
                 {% else %}
                     <p><i>No comments posted yet!</i></p>
-        {% endif %} <!-- end of : " if actual_answers|length >0 " -->
+                {% endif %} <!-- end of : " if actual_answers|length >0 " -->
                 <div id="x-{{ data["id"] }}"><a href="#"><span class="exit">&times;</span></a>
                     <h3 class="modalhead">Confirm</h3>
                     <div class="modalp">
                         <p>Are you sure you want to delete?</p>
-                        <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_answer',answer_id=data["id"] )}}">Yes</a>
+                        <a class="modal_link" href="#">No</a><a class="modal_link"
+                                                                href="{{ url_for('route_delete_answer',answer_id=data["id"] ) }}">Yes</a>
                     </div>
                 </div>
             {% endfor %} <!-- end of : " for data in actual_answers: " -->
         {% else %}
             <p><i>No answers posted yet!</i></p>
-      {% endif %}
-     </div>
+        {% endif %}
+    </div>
     <!-- End of answers section-->
     <!-- Buttons for answers and question: Post answer, delete question, back buttons-->
-    <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] )}}"><input type="button" class="button" value="Post Answer"></a>
-    <a href="#x-"><button class="button">Delete question</button></a>
+    <a href="{{ url_for('route_answer',actual_id=actual_question[0]["id"] ) }}"><input type="button" class="button"
+                                                                                       value="Post Answer"></a>
+    <a href="#x-">
+        <button class="button">Delete question</button>
+    </a>
     <a href="/list"><input type="button" class="button_back" value="Back to home"></a>
     <a href="/list_all"><input type="button" class="button_back" value="< < Back"></a>
-<!-- Pop-up modal for deleting question-->
+    <!-- Pop-up modal for deleting question-->
     <div id="x-"><a href="#"><span class="exit">&times;</span></a>
-    <h3 class="modalhead">Confirm</h3>
+        <h3 class="modalhead">Confirm</h3>
         <div class="modalp">
             <p>Are you sure you want to delete?</p>
-            <a class="modal_link" href="#">No</a><a class="modal_link" href="{{ url_for('route_delete_question',question_id=actual_question[0]["id"] )}}">Yes</a>
+            <a class="modal_link" href="#">No</a><a class="modal_link"
+                                                    href="{{ url_for('route_delete_question',question_id=actual_question[0]["id"] ) }}">Yes</a>
         </div>
     </div>
-<!-- End of modal-->
+    <!-- End of modal-->
 
 {% endblock %}

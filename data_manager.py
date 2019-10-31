@@ -190,6 +190,9 @@ def answer_vote(cursor, vote, id):
         cursor.execute("UPDATE answer SET vote_number = vote_number - 1 WHERE id=%(id)s",
                         {'id': id})
 
+    cursor.execute(f"UPDATE answer SET vote_number = vote_number {('+' if vote == 'up' else '-')} 1 WHERE id=%(id)s",
+                   {'id': id})
+
 
 @connection.connection_handler
 def search_question(cursor,searched):

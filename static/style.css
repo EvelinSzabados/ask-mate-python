@@ -1,35 +1,38 @@
 :root {
-  --duration: 1s;
-  --color: rgba(158, 85, 86, 1);
+    --duration: 1s;
+    --color: rgba(158, 85, 86, 1);
 }
 
-html,body{
+html, body {
     font-family: Verdana, monospace;
-    background-image: linear-gradient(-90deg,#cccccc , #B8C1C0);
+    background-image: linear-gradient(-90deg, #cccccc, #B8C1C0);
     margin: 0px;
-    padding:0px;
-    color:#404040;
+    padding: 0px;
+    color: #404040;
     scroll-behavior: smooth;
 }
-.user_bar{
-    top:0;
-    left:0;
+
+.user_bar {
+    top: 0;
+    left: 0;
     background-color: #404040;
     color: white;
 }
-.button_user_bar{
+
+.button_user_bar {
     background-color: #3B666B;
     color: white;
     border-radius: 7px;
     padding: 15px;
     margin: 10px;
-    border:none;
+    border: none;
 }
 
-.button_user_bar:hover{
-    background-color:#c09853 ;
+.button_user_bar:hover {
+    background-color: #c09853;
 }
-.user_bar_user{
+
+.user_bar_user {
     font-size: 18px;
     font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
     font-weight: bold;
@@ -37,323 +40,353 @@ html,body{
     margin: 20px 10px 10px 30px;
     text-transform: capitalize;
 }
-.search_box{
+
+.search_box {
     border-radius: 15px;
     border: 1px solid #cccccc;
     padding: 20px;
     margin-bottom: 30px;
 }
-.search_icon{
+
+.search_icon {
     width: 40px;
     float: left
 }
-.front-h1{
-    float:right;
-    clear:right;
+
+.front-h1 {
+    float: right;
+    clear: right;
     margin: 15px;
     text-transform: uppercase;
     color: #c09853;
 }
-h2{
+
+h2 {
     color: cadetblue;
     text-transform: capitalize;
 }
+
 .front-links {
-    text-indent:2em;
-    list-style-type:disc;
+    text-indent: 2em;
+    list-style-type: disc;
     padding: 10px 0px 10px 0px;
     border: 1px solid #eeeeee;
     border-left: 5px solid cadetblue;
 }
-.front-links:hover{
+
+.front-links:hover {
     transition: 0.5s;
     border-color: #ffffff;
     border-left: 40px solid #444444;
 }
-.container-box{
 
-    margin:100px auto;
-    min-width:60%;
+.container-box {
+
+    margin: 100px auto;
+    min-width: 60%;
     max-width: 80%;
 
 }
-#container{
+
+#container {
     background-color: white;
-    padding:20px;
+    padding: 20px;
     width: 100%;
     margin: 100px auto;
 
 }
-#container .table-container img{
+
+#container .table-container img {
     padding: 10px;
 }
 
-#container .answer_header{
+#container .answer_header {
     margin-top: 10px;
     font-size: 12px;
     text-transform: capitalize;
-    color:cadetblue;
+    color: cadetblue;
 }
-#container .answer_content{
+
+#container .answer_content {
     margin-left: 20px;
-    padding:10px;
+    padding: 10px;
     background-color: white;
     border-left: 6px solid cadetblue;
 }
 
-#container .answers{
+#container .answers {
     background-color: #eeeeee;
     padding: 10px 10px 10px 20px;
     margin-top: 10px;
 }
-.comments{
+
+.comments {
     background-color: white;
     margin: 10px;
 }
-.comments .comment_header{
+
+.comments .comment_header {
     color: #404040;
     font-size: 12px;
 }
 
-.comments .comment_content{
+.comments .comment_content {
     font-size: 13px;
     padding: 10px 10px 10px 20px;
-     border-left: 6px solid rgba(224, 159, 62, 1);
+    border-left: 6px solid rgba(224, 159, 62, 1);
 }
 
-.comment_content_answer{
+.comment_content_answer {
     font-size: 13px;
     padding: 10px 10px 10px 20px;
     border-left: 6px solid rgba(224, 159, 62, 1);
     margin-left: 50px;
 
 }
-.comment_header_answers{
+
+.comment_header_answers {
     color: #404040;
     font-size: 12px;
     margin-left: 30px;
 }
-#container .answers img{
-    padding-right:20px;
+
+#container .answers img {
+    padding-right: 20px;
 }
 
-#container h1{
+#container h1 {
     color: dimgray;
     text-transform: uppercase;
 
 }
+
 #container .answers_table {
     width: auto;
     font-size: 10px;
-    color:#404040;
+    color: #404040;
     padding: 5px;
-    margin:0px;
-  }
+    margin: 0px;
+}
+
 #container caption {
     text-align: left;
 
 }
-#container .answers_table .details{
-    padding:0px;
+
+#container .answers_table .details {
+    padding: 0px;
     text-align: left;
-    margin:2px;
+    margin: 2px;
 }
-#container table{
+
+#container table {
     margin: 0px auto;
     width: 99%;
 
 }
-#container table th{
+
+#container table th {
     padding: 15px;
-    margin:15px;
+    margin: 15px;
     text-align: center;
     text-transform: capitalize;
     font-size: 15px;
-    font-weight:normal;
-    color:white;
+    font-weight: normal;
+    color: white;
     background-color: cadetblue;
 }
-#container table td{
+
+#container table td {
     margin: 15px;
-    padding:15px;
-    text-align:left;
+    padding: 15px;
+    text-align: left;
     max-width: 300px;
 }
 
-.error{
+.error {
     color: red;
     text-transform: uppercase;
 }
-method{
-    padding:0px;
+
+method {
+    padding: 0px;
 }
 
-.button{
-  background-color: #eeeeee;
-  border: none;
-  color: cadetblue;
-  padding: 15px 15px;
-  text-align: center;
-  text-decoration: none;
+.button {
+    background-color: #eeeeee;
+    border: none;
+    color: cadetblue;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
     max-width: 200px;
-  font-size: 16px;
-  margin: 20px 5px 10px 5px;
-  cursor: pointer;
+    font-size: 16px;
+    margin: 20px 5px 10px 5px;
+    cursor: pointer;
 }
-.button:hover{
-  background-color: #cccccc;
-    color:white;
+
+.button:hover {
+    background-color: #cccccc;
+    color: white;
     transition: 1s;
 
 }
 
-.button_comment{
+.button_comment {
     background-color: transparent;
-  border: none;
+    border: none;
     font-weight: bold;
-  color: cadetblue;
-  padding: 15px 15px;
-  text-align: center;
-  text-decoration: none;
+    color: cadetblue;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
     max-width: 200px;
-  font-size: 16px;
-  margin: 20px 5px 0px 5px;
-  cursor: pointer;
+    font-size: 16px;
+    margin: 20px 5px 0px 5px;
+    cursor: pointer;
 }
 
-.button_comment:hover{
-    color:#11557C;
+.button_comment:hover {
+    color: #11557C;
     border-bottom: 3px solid #11557C;
 
 }
-.button_back{
+
+.button_back {
     background-color: transparent;
-  border: none;
-  color: cadetblue;
-  padding: 15px 15px;
-  text-align: center;
-  text-decoration: none;
+    border: none;
+    color: cadetblue;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
     max-width: 200px;
-    float:right;
-  font-size: 16px;
-  margin: 20px 5px 10px 5px;
-  cursor: pointer;
+    float: right;
+    font-size: 16px;
+    margin: 20px 5px 10px 5px;
+    cursor: pointer;
 }
-.button_back:hover{
-  background-color: #cccccc;
-    color:white;
+
+.button_back:hover {
+    background-color: #cccccc;
+    color: white;
     transition: 1s;
 
 }
 
-#container .button_update{
+#container .button_update {
     font-weight: bold;
     background-color: transparent;
-  color: cadetblue;
-  padding: 15px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
+    color: cadetblue;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
 
-  cursor: pointer;
+    cursor: pointer;
 
 }
 
-#container a{
+#container a {
     text-decoration: none;
     color: darkslategrey;
 
 
-
 }
-#container a:hover{
+
+#container a:hover {
     color: cadetblue;
     transition: 0.3s;
 
 }
-input{
-    padding:10px;
+
+input {
+    padding: 10px;
     width: 25%;
 
 }
-textarea{
-    padding:15px;
+
+textarea {
+    padding: 15px;
 }
 
-#select_box{
+#select_box {
     width: 27%;
     background-color: white;
     color: #404040;
-    cursor:pointer;
-    display:inline-block;
-    position:relative;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
     font-size: 16px;
-    border:1px solid #ccc;
+    border: 1px solid #ccc;
     padding: 15px;
 }
-footer{
+
+footer {
     padding: 20px;
     text-align: center;
     background-color: cadetblue;
     color: white;
     width: 100%;
-    margin:0px auto;
+    margin: 0px auto;
     font-size: small;
 
 }
-.modalhead{
-  background:rgba(84, 84, 84, 1);
-  padding:20px;
-  margin:0px;
-  color:white;
-  font-size:16px;
-  text-transform: uppercase;
+
+.modalhead {
+    background: rgba(84, 84, 84, 1);
+    padding: 20px;
+    margin: 0px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
 
 }
 
 [id^=x-] {
-  display: none;
-  border: 0px solid gray;
-  background-color: white;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  color:#404040;
-  padding:0px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation-name: modalopen;
-  animation-duration: var(--duration);
-  border-bottom: 0px solid rgba(84, 84, 84, 1);
- transform: translate(-50%,-50%);
-  min-height:20%;
-  max-height: 30%;
-  min-width: 30%;
+    display: none;
+    border: 0px solid gray;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: #404040;
+    padding: 0px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--duration);
+    border-bottom: 0px solid rgba(84, 84, 84, 1);
+    transform: translate(-50%, -50%);
+    min-height: 20%;
+    max-height: 30%;
+    min-width: 30%;
 
-  }
+}
 
 input[type=checkbox] {
-  position: absolute;
-  clip: rect(0 0 0 0);
-  }
-  .modalp {
-    padding:20px;
-  }
-
-.exit{
-  text-decoration:none;
-  font-size: 40px;
-
-  overflow:hidden;
-  color:white;
-  margin: 5px 20px;
-
-}
-.exit:hover{
-  color: rgba(224, 159, 62, 1);
+    position: absolute;
+    clip: rect(0 0 0 0);
 }
 
-.modal_link{
-    padding:10px 20px;
+.modalp {
+    padding: 20px;
+}
+
+.exit {
+    text-decoration: none;
+    font-size: 40px;
+
+    overflow: hidden;
+    color: white;
+    margin: 5px 20px;
+
+}
+
+.exit:hover {
+    color: rgba(224, 159, 62, 1);
+}
+
+.modal_link {
+    padding: 10px 20px;
     max-height: 50px;
     margin: 10px;
     bottom: 20px;
@@ -363,116 +396,123 @@ input[type=checkbox] {
     overflow: hidden;
 }
 
-.modal_link:hover{
-    background-color:#cccccc ;
+.modal_link:hover {
+    background-color: #cccccc;
 }
+
 [id^=x-]:target {
-  display: block;
-  }
+    display: block;
+}
+
 [id^=x-] a {
-  float: right;
-  }
+    float: right;
+}
 
 .expandable {
-  overflow: hidden;
-  color: #000;
-  line-height: 50px;
-  height: 0;
- }
+    overflow: hidden;
+    color: #000;
+    line-height: 50px;
+    height: 0;
+}
 
- .expandable:target {
+.expandable:target {
     height: auto;
-     line-height: 2;
+    line-height: 2;
     padding-top: 1em;
     padding-bottom: 1em;
 
 }
 
- .expandable.modal_link{
-     padding: 0;
-     background-color: red;
- }
+.expandable.modal_link {
+    padding: 0;
+    background-color: red;
+}
 
-.close_span:target{
+.close_span:target {
     line-height: 0;
     transition: none;
 }
+
 /* The container */
 .container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-    float:left;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    float: left;
 }
 
 /* Hide the browser's default radio button */
 .container input[type=radio] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 
 
 }
+
 /* Create a custom radio button */
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 15px;
-  width: 15px;
-  background-color: #808080;
-  border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #808080;
+    border-radius: 50%;
 
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: cadetblue;
+    background-color: cadetblue;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+    content: "";
+    position: absolute;
+    display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
 .container input:checked ~ .checkmark:after {
-  display: block;
+    display: block;
 }
 
 /* Style the indicator (dot/circle) */
 .container .checkmark:after {
- 	top: 5px;
-	left: 5px;
-	width: 5px;
-	height: 5px;
-	border-radius: 50%;
-	background: white;
+    top: 5px;
+    left: 5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
 }
+
 fieldset {
-  overflow: hidden;
+    overflow: hidden;
     clear: none;
-    border:none;
+    border: none;
 }
-.order_container{
+
+.order_container {
     background-color: #efefef;
     padding: 10px;
 }
-select{
+
+select {
     background-color: white;
     border: 1px solid #ccc;
     color: #404040;
@@ -480,166 +520,185 @@ select{
     font-size: 14px;
     margin: 5px 10px;
 }
-.select_order{
+
+.select_order {
     width: 100px;
     background-color: transparent;
-    color:#404040;
+    color: #404040;
     text-decoration: none;
-    border:none;
+    border: none;
     padding: 15px;
 }
-.select_order:hover{
+
+.select_order:hover {
 
     transition: 1s;
     color: white;
     background-color: cadetblue;
 }
-.trash_bin{
+
+.trash_bin {
     margin-left: 20px;
 
 }
-.register{
-    margin: 0px;
-    top:0;
+
+.register {
+    margin: 0;
+    top: 0;
     width: 100%;
 
 
 }
-.reg_button{
+
+.reg_button {
     font-weight: bolder;
     font-size: 18px;
     color: #3B666B;
     padding: 20px;
-    border:none;
-    float:right;
+    border: none;
+    float: right;
     background-color: transparent;
 
 
 }
-.clear{
+
+.clear {
     clear: right;
 }
 
-.reg_button:hover{
+.reg_button:hover {
     background-color: cadetblue;
 }
+
 /* Style the form - display items horizontally */
 .form-inline {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
 }
 
 /* Add some margins for each label */
 .form-inline label {
-  margin: 5px 10px 5px 0;
+    margin: 5px 10px 5px 0;
 }
 
 /* Style the input fields */
 .form-inline input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
     width: 200px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 
 /* Style the submit button */
 .form-inline button {
-  padding: 10px 20px;
-  background-color: cadetblue;
-    border:none;
-  color: white;
+    padding: 10px 20px;
+    background-color: cadetblue;
+    border: none;
+    color: white;
     margin: 10px;
 }
 
 .form-inline button:hover {
-  background-color: royalblue;
+    background-color: royalblue;
 }
-.login{
+
+.login {
     margin: 10px;
-    float:right;
+    float: right;
 }
 
 .close {
-  float: right;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 18px;
-  color: #000000;
-  text-shadow: 0 1px 0 #ffffff;
-  opacity: 0.2;
-  filter: alpha(opacity=20);
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
 }
+
 .close:hover {
-  color: #000000;
-  text-decoration: none;
-  opacity: 0.4;
-  filter: alpha(opacity=40);
-  cursor: pointer;
+    color: #000000;
+    text-decoration: none;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    cursor: pointer;
 }
 
 .alert {
-  padding: 8px 35px 8px 14px;
-  margin-bottom: 10px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  color: #c09853;
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    color: #c09853;
 }
+
 .alert-heading {
-  color: inherit;
+    color: inherit;
 }
+
 .alert .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
-  line-height: 18px;
+    position: relative;
+    top: -2px;
+    right: -21px;
+    line-height: 18px;
 }
+
 .alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
 }
+
 .alert-danger,
 .alert-error {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
 }
+
 .alert-info {
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-  color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #3a87ad;
 }
+
 .alert-block {
-  padding-top: 14px;
-  padding-bottom: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
 }
+
 .alert-block > p,
 .alert-block > ul {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
+
 .alert-block p + p {
-  margin-top: 5px;
+    margin-top: 5px;
 }
+
 /* Add responsiveness - display the form controls vertically instead of horizontally on screens that are less than 800px wide */
 @media (max-width: 800px) {
-  .form-inline input {
-    margin: 10px 0;
-  }
+    .form-inline input {
+        margin: 10px 0;
+    }
 
-  .form-inline {
-    flex-direction: column;
-    align-items: stretch;
-  }
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
-  @keyframes modalopen {
+
+@keyframes modalopen {
     from {
-      opacity: 0;
+        opacity: 0;
     }
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
